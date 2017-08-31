@@ -33,8 +33,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/007-folder.svg</normaloff>icons/007-folder.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/folder.svg</normaloff>:/icons/icons/folder.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -53,8 +53,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/006-floppy-disk.svg</normaloff>icons/006-floppy-disk.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/floppy-disk.svg</normaloff>:/icons/icons/floppy-disk.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -80,8 +80,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/004-document-empty.svg</normaloff>icons/004-document-empty.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/document-empty.svg</normaloff>:/icons/icons/document-empty.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -100,8 +100,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/008-document-random.svg</normaloff>icons/008-document-random.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/document-random.svg</normaloff>:/icons/icons/document-random.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -120,8 +120,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/005-eraser.svg</normaloff>icons/005-eraser.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/eraser.svg</normaloff>:/icons/icons/eraser.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -152,8 +152,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/018-Q.svg</normaloff>icons/018-Q.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/Q.svg</normaloff>:/icons/icons/Q.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -177,8 +177,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/019-D.svg</normaloff>icons/019-D.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/D.svg</normaloff>:/icons/icons/D.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -204,8 +204,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/001-zoom-in.svg</normaloff>icons/001-zoom-in.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/zoom-in.svg</normaloff>:/icons/icons/zoom-in.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -224,8 +224,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/002-zoom-out.svg</normaloff>icons/002-zoom-out.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/zoom-out.svg</normaloff>:/icons/icons/zoom-out.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -251,8 +251,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/003-book.svg</normaloff>icons/003-book.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/book.svg</normaloff>:/icons/icons/book.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -271,8 +271,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/thot.ico</normaloff>icons/thot.ico</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/thot.ico</normaloff>:/icons/icons/thot.ico</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -295,8 +295,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/012-plus.svg</normaloff>icons/012-plus.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/plus.svg</normaloff>:/icons/icons/plus.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -322,8 +322,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/011-minus.svg</normaloff>icons/011-minus.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/minus.svg</normaloff>:/icons/icons/minus.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -349,8 +349,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/010-plus-x.svg</normaloff>icons/010-plus-x.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/plus-x.svg</normaloff>:/icons/icons/plus-x.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -376,8 +376,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/009-minus-x.svg</normaloff>icons/009-minus-x.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/minus-x.svg</normaloff>:/icons/icons/minus-x.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -403,8 +403,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/0013-times.svg</normaloff>icons/0013-times.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/times.svg</normaloff>:/icons/icons/times.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -430,8 +430,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/014-div.svg</normaloff>icons/014-div.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/div.svg</normaloff>:/icons/icons/div.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -457,8 +457,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/015-exchange.svg</normaloff>icons/015-exchange.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/exchange.svg</normaloff>:/icons/icons/exchange.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -489,8 +489,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/017-opposite.svg</normaloff>icons/017-opposite.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/opposite.svg</normaloff>:/icons/icons/opposite.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -516,8 +516,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>icons/016-cancel.svg</normaloff>icons/016-cancel.svg</iconset>
+         <iconset resource="ressources.qrc">
+          <normaloff>:/icons/icons/cancel.svg</normaloff>:/icons/icons/cancel.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -536,6 +536,18 @@
      <layout class="QGridLayout" name="gridLayout" rowstretch="0" columnstretch="0">
       <item row="0" column="0">
        <widget class="QScrollArea" name="scrollArea">
+        <property name="font">
+         <font>
+          <family>Latin Modern Roman</family>
+          <pointsize>18</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -544,10 +556,24 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>1016</width>
-           <height>417</height>
+           <width>1020</width>
+           <height>421</height>
           </rect>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QListView" name="equations">
+            <property name="font">
+             <font>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="viewMode">
+             <enum>QListView::ListMode</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
@@ -616,121 +642,160 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOuvrir_un_fichier_quations">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/007-folder.svg</normaloff>icons/007-folder.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/folder.svg</normaloff>:/icons/icons/folder.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Ouvrir un fichier équations</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionSauvegarder_un_fichier_quation">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/006-floppy-disk.svg</normaloff>icons/006-floppy-disk.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/floppy-disk.svg</normaloff>:/icons/icons/floppy-disk.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Sauvegarder un fichier équation</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actionNouvelle_quation">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/004-document-empty.svg</normaloff>icons/004-document-empty.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/document-empty.svg</normaloff>:/icons/icons/document-empty.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Nouvelle équation</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="action_quation_au_hasard">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/008-document-random.svg</normaloff>icons/008-document-random.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/document-random.svg</normaloff>:/icons/icons/document-random.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Équation au hasard</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
   </action>
   <action name="actionEffacer_l_quation">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/005-eraser.svg</normaloff>icons/005-eraser.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/eraser.svg</normaloff>:/icons/icons/eraser.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Effacer l'équation</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
    </property>
   </action>
   <action name="actionQuitter">
    <property name="text">
     <string>&amp;Quitter</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
   </action>
   <action name="actionAjouter_un_nombre">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/012-plus.svg</normaloff>icons/012-plus.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/plus.svg</normaloff>:/icons/icons/plus.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Ajouter un nombre</string>
    </property>
+   <property name="shortcut">
+    <string>+</string>
+   </property>
   </action>
   <action name="actionSoustraire_un_nombre">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/011-minus.svg</normaloff>icons/011-minus.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/minus.svg</normaloff>:/icons/icons/minus.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Soustraire un nombre</string>
    </property>
+   <property name="shortcut">
+    <string>-</string>
+   </property>
   </action>
   <action name="actionAjouter_un_terme_en_x">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/010-plus-x.svg</normaloff>icons/010-plus-x.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/plus-x.svg</normaloff>:/icons/icons/plus-x.svg</iconset>
    </property>
    <property name="text">
     <string>Ajouter &amp;un terme en x</string>
    </property>
+   <property name="shortcut">
+    <string>P</string>
+   </property>
   </action>
   <action name="actionSoustraire_un_terme_en_x">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/009-minus-x.svg</normaloff>icons/009-minus-x.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/minus-x.svg</normaloff>:/icons/icons/minus-x.svg</iconset>
    </property>
    <property name="text">
     <string>Soustraire un terme &amp;en x</string>
    </property>
+   <property name="shortcut">
+    <string>M</string>
+   </property>
   </action>
   <action name="actionMultiplier_par_un_nombre">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/0013-times.svg</normaloff>icons/0013-times.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/times.svg</normaloff>:/icons/icons/times.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Multiplier</string>
    </property>
+   <property name="shortcut">
+    <string>*</string>
+   </property>
   </action>
   <action name="actionDiviser_par_un_nombre">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/014-div.svg</normaloff>icons/014-div.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/div.svg</normaloff>:/icons/icons/div.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Diviser</string>
    </property>
+   <property name="shortcut">
+    <string>/</string>
+   </property>
   </action>
   <action name="actionIntervertir_les_deux_membres">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/015-exchange.svg</normaloff>icons/015-exchange.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/exchange.svg</normaloff>:/icons/icons/exchange.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Intervertir les deux membres</string>
    </property>
+   <property name="shortcut">
+    <string>I</string>
+   </property>
   </action>
   <action name="actionPrendre_l_oppos">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/017-opposite.svg</normaloff>icons/017-opposite.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/opposite.svg</normaloff>:/icons/icons/opposite.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Prendre l'opposé</string>
@@ -739,16 +804,19 @@
     <string>+ / -</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+S</string>
+    <string>O</string>
    </property>
   </action>
   <action name="actionAnnuler">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/016-cancel.svg</normaloff>icons/016-cancel.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/cancel.svg</normaloff>:/icons/icons/cancel.svg</iconset>
    </property>
    <property name="text">
     <string>A&amp;nnuler</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
    </property>
   </action>
   <action name="actionMode_fraction">
@@ -756,11 +824,14 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>icons/018-Q.svg</normaloff>icons/018-Q.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/Q.svg</normaloff>:/icons/icons/Q.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Mode fraction</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionMode_d_cimal">
@@ -771,50 +842,409 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>icons/019-D.svg</normaloff>icons/019-D.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/D.svg</normaloff>:/icons/icons/D.svg</iconset>
    </property>
    <property name="text">
     <string>Mode &amp;décimal</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
   </action>
   <action name="actionAgrandir">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/001-zoom-in.svg</normaloff>icons/001-zoom-in.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/zoom-in.svg</normaloff>:/icons/icons/zoom-in.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Agrandir</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
   </action>
   <action name="actionR_duire">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/002-zoom-out.svg</normaloff>icons/002-zoom-out.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/zoom-out.svg</normaloff>:/icons/icons/zoom-out.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Réduire</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
   </action>
   <action name="actionAide">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/003-book.svg</normaloff>icons/003-book.svg</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/book.svg</normaloff>:/icons/icons/book.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Aide</string>
    </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
   </action>
   <action name="actionA_propos">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/thot.ico</normaloff>icons/thot.ico</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/icons/thot.ico</normaloff>:/icons/icons/thot.ico</iconset>
    </property>
    <property name="text">
     <string>A &amp;propos</string>
    </property>
   </action>
  </widget>
- <resources/>
- <connections/>
+ <tabstops>
+  <tabstop>add_num</tabstop>
+  <tabstop>sub_num</tabstop>
+  <tabstop>add_x</tabstop>
+  <tabstop>sub_x</tabstop>
+  <tabstop>mult</tabstop>
+  <tabstop>div</tabstop>
+  <tabstop>exchange</tabstop>
+  <tabstop>opposite</tabstop>
+  <tabstop>cancel</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>equations</tabstop>
+  <tabstop>open</tabstop>
+  <tabstop>save</tabstop>
+  <tabstop>new_equation</tabstop>
+  <tabstop>random</tabstop>
+  <tabstop>empty</tabstop>
+  <tabstop>fraction</tabstop>
+  <tabstop>decimal</tabstop>
+  <tabstop>zoom_in</tabstop>
+  <tabstop>zoom_out</tabstop>
+  <tabstop>help</tabstop>
+  <tabstop>about</tabstop>
+ </tabstops>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>open</sender>
+   <signal>clicked()</signal>
+   <receiver>actionOuvrir_un_fichier_quations</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>48</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save</sender>
+   <signal>clicked()</signal>
+   <receiver>actionSauvegarder_un_fichier_quation</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>138</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>new_equation</sender>
+   <signal>clicked()</signal>
+   <receiver>actionNouvelle_quation</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>237</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>random</sender>
+   <signal>clicked()</signal>
+   <receiver>action_quation_au_hasard</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>327</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>empty</sender>
+   <signal>clicked()</signal>
+   <receiver>actionEffacer_l_quation</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>417</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>about</sender>
+   <signal>clicked()</signal>
+   <receiver>actionA_propos</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>984</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>help</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAide</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>894</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoom_out</sender>
+   <signal>clicked()</signal>
+   <receiver>actionR_duire</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>795</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoom_in</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAgrandir</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>705</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>decimal</sender>
+   <signal>clicked()</signal>
+   <receiver>actionMode_d_cimal</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>606</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fraction</sender>
+   <signal>clicked()</signal>
+   <receiver>actionMode_fraction</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>516</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAnnuler</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>976</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>opposite</sender>
+   <signal>clicked()</signal>
+   <receiver>actionPrendre_l_oppos</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>861</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exchange</sender>
+   <signal>clicked()</signal>
+   <receiver>actionIntervertir_les_deux_membres</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>746</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>div</sender>
+   <signal>clicked()</signal>
+   <receiver>actionDiviser_par_un_nombre</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>631</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mult</sender>
+   <signal>clicked()</signal>
+   <receiver>actionMultiplier_par_un_nombre</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>516</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sub_x</sender>
+   <signal>clicked()</signal>
+   <receiver>actionSoustraire_un_terme_en_x</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sub_num</sender>
+   <signal>clicked()</signal>
+   <receiver>actionSoustraire_un_nombre</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>171</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>add_x</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAjouter_un_terme_en_x</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>286</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>add_num</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAjouter_un_nombre</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

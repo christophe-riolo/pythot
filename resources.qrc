@@ -1,0 +1,27 @@
+<RCC>
+  <qresource prefix="/icons">
+    <file>icons/book.svg</file>
+    <file>icons/cancel.svg</file>
+    <file>icons/D.svg</file>
+    <file>icons/div.svg</file>
+    <file>icons/document-empty.svg</file>
+    <file>icons/document-random.svg</file>
+    <file>icons/eraser.svg</file>
+    <file>icons/exchange.svg</file>
+    <file>icons/floppy-disk.svg</file>
+    <file>icons/folder.svg</file>
+    <file>icons/minus-x.svg</file>
+    <file>icons/minus.svg</file>
+    <file>icons/opposite.svg</file>
+    <file>icons/plus-x.svg</file>
+    <file>icons/plus.svg</file>
+    <file>icons/Q.svg</file>
+    <file>icons/thot.ico</file>
+    <file>icons/times.svg</file>
+    <file>icons/zoom-in.svg</file>
+    <file>icons/zoom-out.svg</file>
+  </qresource>
+  <qresource prefix="/fonts">
+    <file>fonts/lmroman10-bolditalic.otf</file>
+  </qresource>
+</RCC>
