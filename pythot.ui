@@ -149,7 +149,11 @@
          </font>
         </property>
         <property name="text">
-         <string>Q</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/018-Q.svg</normaloff>icons/018-Q.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -170,7 +174,11 @@
          </font>
         </property>
         <property name="text">
-         <string>D</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/019-D.svg</normaloff>icons/019-D.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -478,7 +486,17 @@
          </font>
         </property>
         <property name="text">
-         <string>+ / -</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icons/017-opposite.svg</normaloff>icons/017-opposite.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -527,7 +545,7 @@
            <x>0</x>
            <y>0</y>
            <width>1016</width>
-           <height>406</height>
+           <height>417</height>
           </rect>
          </property>
         </widget>
@@ -710,6 +728,10 @@
    </property>
   </action>
   <action name="actionPrendre_l_oppos">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/017-opposite.svg</normaloff>icons/017-opposite.svg</iconset>
+   </property>
    <property name="text">
     <string>&amp;Prendre l'opposé</string>
    </property>
@@ -733,6 +755,10 @@
    <property name="checkable">
     <bool>false</bool>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/018-Q.svg</normaloff>icons/018-Q.svg</iconset>
+   </property>
    <property name="text">
     <string>&amp;Mode fraction</string>
    </property>
@@ -743,6 +769,10 @@
    </property>
    <property name="checked">
     <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/019-D.svg</normaloff>icons/019-D.svg</iconset>
    </property>
    <property name="text">
     <string>Mode &amp;décimal</string>
