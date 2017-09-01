@@ -33,7 +33,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/folder.svg</normaloff>:/icons/icons/folder.svg</iconset>
         </property>
         <property name="iconSize">
@@ -53,7 +53,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/floppy-disk.svg</normaloff>:/icons/icons/floppy-disk.svg</iconset>
         </property>
         <property name="iconSize">
@@ -80,7 +80,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/document-empty.svg</normaloff>:/icons/icons/document-empty.svg</iconset>
         </property>
         <property name="iconSize">
@@ -100,7 +100,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/document-random.svg</normaloff>:/icons/icons/document-random.svg</iconset>
         </property>
         <property name="iconSize">
@@ -120,7 +120,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/eraser.svg</normaloff>:/icons/icons/eraser.svg</iconset>
         </property>
         <property name="iconSize">
@@ -152,7 +152,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/Q.svg</normaloff>:/icons/icons/Q.svg</iconset>
         </property>
         <property name="iconSize">
@@ -177,7 +177,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/D.svg</normaloff>:/icons/icons/D.svg</iconset>
         </property>
         <property name="iconSize">
@@ -204,7 +204,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/zoom-in.svg</normaloff>:/icons/icons/zoom-in.svg</iconset>
         </property>
         <property name="iconSize">
@@ -224,7 +224,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/zoom-out.svg</normaloff>:/icons/icons/zoom-out.svg</iconset>
         </property>
         <property name="iconSize">
@@ -251,7 +251,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/book.svg</normaloff>:/icons/icons/book.svg</iconset>
         </property>
         <property name="iconSize">
@@ -271,7 +271,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/thot.ico</normaloff>:/icons/icons/thot.ico</iconset>
         </property>
         <property name="iconSize">
@@ -295,7 +295,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/plus.svg</normaloff>:/icons/icons/plus.svg</iconset>
         </property>
         <property name="iconSize">
@@ -322,7 +322,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/minus.svg</normaloff>:/icons/icons/minus.svg</iconset>
         </property>
         <property name="iconSize">
@@ -349,7 +349,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/plus-x.svg</normaloff>:/icons/icons/plus-x.svg</iconset>
         </property>
         <property name="iconSize">
@@ -376,7 +376,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/minus-x.svg</normaloff>:/icons/icons/minus-x.svg</iconset>
         </property>
         <property name="iconSize">
@@ -403,7 +403,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/times.svg</normaloff>:/icons/icons/times.svg</iconset>
         </property>
         <property name="iconSize">
@@ -430,7 +430,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/div.svg</normaloff>:/icons/icons/div.svg</iconset>
         </property>
         <property name="iconSize">
@@ -457,7 +457,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/exchange.svg</normaloff>:/icons/icons/exchange.svg</iconset>
         </property>
         <property name="iconSize">
@@ -489,7 +489,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/opposite.svg</normaloff>:/icons/icons/opposite.svg</iconset>
         </property>
         <property name="iconSize">
@@ -516,7 +516,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="ressources.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/icons/icons/cancel.svg</normaloff>:/icons/icons/cancel.svg</iconset>
         </property>
         <property name="iconSize">
@@ -642,7 +642,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOuvrir_un_fichier_quations">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/folder.svg</normaloff>:/icons/icons/folder.svg</iconset>
    </property>
    <property name="text">
@@ -654,7 +654,7 @@
   </action>
   <action name="actionSauvegarder_un_fichier_quation">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/floppy-disk.svg</normaloff>:/icons/icons/floppy-disk.svg</iconset>
    </property>
    <property name="text">
@@ -666,7 +666,7 @@
   </action>
   <action name="actionNouvelle_quation">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/document-empty.svg</normaloff>:/icons/icons/document-empty.svg</iconset>
    </property>
    <property name="text">
@@ -678,7 +678,7 @@
   </action>
   <action name="action_quation_au_hasard">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/document-random.svg</normaloff>:/icons/icons/document-random.svg</iconset>
    </property>
    <property name="text">
@@ -690,7 +690,7 @@
   </action>
   <action name="actionEffacer_l_quation">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/eraser.svg</normaloff>:/icons/icons/eraser.svg</iconset>
    </property>
    <property name="text">
@@ -710,7 +710,7 @@
   </action>
   <action name="actionAjouter_un_nombre">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/plus.svg</normaloff>:/icons/icons/plus.svg</iconset>
    </property>
    <property name="text">
@@ -722,7 +722,7 @@
   </action>
   <action name="actionSoustraire_un_nombre">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/minus.svg</normaloff>:/icons/icons/minus.svg</iconset>
    </property>
    <property name="text">
@@ -734,7 +734,7 @@
   </action>
   <action name="actionAjouter_un_terme_en_x">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/plus-x.svg</normaloff>:/icons/icons/plus-x.svg</iconset>
    </property>
    <property name="text">
@@ -746,7 +746,7 @@
   </action>
   <action name="actionSoustraire_un_terme_en_x">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/minus-x.svg</normaloff>:/icons/icons/minus-x.svg</iconset>
    </property>
    <property name="text">
@@ -758,7 +758,7 @@
   </action>
   <action name="actionMultiplier_par_un_nombre">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/times.svg</normaloff>:/icons/icons/times.svg</iconset>
    </property>
    <property name="text">
@@ -770,7 +770,7 @@
   </action>
   <action name="actionDiviser_par_un_nombre">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/div.svg</normaloff>:/icons/icons/div.svg</iconset>
    </property>
    <property name="text">
@@ -782,7 +782,7 @@
   </action>
   <action name="actionIntervertir_les_deux_membres">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/exchange.svg</normaloff>:/icons/icons/exchange.svg</iconset>
    </property>
    <property name="text">
@@ -794,7 +794,7 @@
   </action>
   <action name="actionPrendre_l_oppos">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/opposite.svg</normaloff>:/icons/icons/opposite.svg</iconset>
    </property>
    <property name="text">
@@ -809,7 +809,7 @@
   </action>
   <action name="actionAnnuler">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/cancel.svg</normaloff>:/icons/icons/cancel.svg</iconset>
    </property>
    <property name="text">
@@ -824,7 +824,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/Q.svg</normaloff>:/icons/icons/Q.svg</iconset>
    </property>
    <property name="text">
@@ -842,7 +842,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/D.svg</normaloff>:/icons/icons/D.svg</iconset>
    </property>
    <property name="text">
@@ -854,7 +854,7 @@
   </action>
   <action name="actionAgrandir">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/zoom-in.svg</normaloff>:/icons/icons/zoom-in.svg</iconset>
    </property>
    <property name="text">
@@ -866,7 +866,7 @@
   </action>
   <action name="actionR_duire">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/zoom-out.svg</normaloff>:/icons/icons/zoom-out.svg</iconset>
    </property>
    <property name="text">
@@ -878,7 +878,7 @@
   </action>
   <action name="actionAide">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/book.svg</normaloff>:/icons/icons/book.svg</iconset>
    </property>
    <property name="text">
@@ -890,7 +890,7 @@
   </action>
   <action name="actionA_propos">
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="resources.qrc">
      <normaloff>:/icons/icons/thot.ico</normaloff>:/icons/icons/thot.ico</iconset>
    </property>
    <property name="text">
@@ -923,7 +923,7 @@
   <tabstop>about</tabstop>
  </tabstops>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>
