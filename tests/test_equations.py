@@ -1,0 +1,42 @@
+import unittest
+from sympy.abc import x
+from .. import equations
+
+
+class testEquation(unittest.TestCase):
+    def test_empty_init(self):
+        eq = equations.Equation()
+        self.assertEqual(eq.left, 0)
+        self.assertEqual(eq.right, 0)
+
+    def test_init(self):
+        eq = equations.Equation("3*x+2 = 2*x-6")
+        self.assertEqual(eq.left, 3*x+2)
+        self.assertEqual(eq.right, 2*x-6)
+
+    def test_add_equation(self):
+        eq = equations.Equation()
+        eq2 = equations.Equation("x=2*x")
+        res = eq + eq2
+        self.assertEqual(res.left, x)
+        self.assertEqual(res.right, 2*x)
+
+    def test_sub_equation(self):
+        eq = equations.Equation()
+        eq2 = equations.Equation("x=2*x")
+        res = eq - eq2
+        self.assertEqual(res.left, -x)
+        self.assertEqual(res.right, -2*x)
+
+    def test_mul_equation(self):
+        eq = equations.Equation("x=x")
+        eq2 = equations.Equation("x=2*x")
+        res = eq * eq2
+        self.assertEqual(res.left, x**2)
+        self.assertEqual(res.right, 2*x**2)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+# vim: fdm=indent
