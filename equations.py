@@ -82,6 +82,18 @@ class Equation:
                     + type(other))
         return res
 
+    def __neg__(self):
+        res = Equation()
+        res.left = -self.left
+        res.right = -self.right
+        return res
+
+    def __invert__(self):
+        res = Equation()
+        res.left = self.right
+        res.right = self.left
+        return res
+
     def isSolved(self):
         # The l0 and r0 are the constant terms
         # and l1 and r1 are the x-dependent ones.
