@@ -11,5 +11,8 @@ ui: $(UI_FILE)
 resources: $(RESOURCE_FILE)
 	pyrcc5  -o $(RESOURCE) $(RESOURCE_FILE)
 
+test:
+	python -m pythot.tests.test_equations
+
 clean:
 	rm -f $(RESOURCE) $(UI)
