@@ -66,6 +66,18 @@ class testEquation(unittest.TestCase):
         self.assertEqual(res.left, 1)
         self.assertEqual(res.right, 2)
 
+    def test_inv(self):
+        eq = equations.Equation("x=2*x")
+        res = ~eq
+        self.assertEqual(res.left, 2*x)
+        self.assertEqual(res.right, x)
+
+    def test_neg(self):
+        eq = equations.Equation("x=2*x")
+        res = -eq
+        self.assertEqual(res.left, -x)
+        self.assertEqual(res.right, -2*x)
+
 
 if __name__ == "__main__":
     unittest.main()
