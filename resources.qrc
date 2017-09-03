@@ -22,6 +22,7 @@
     <file>icons/zoom-out.svg</file>
   </qresource>
   <qresource prefix="/fonts">
+    <file>fonts/lmroman10-regular.otf</file>
     <file>fonts/lmroman10-bolditalic.otf</file>
   </qresource>
 </RCC>
