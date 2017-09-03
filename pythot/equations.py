@@ -110,6 +110,7 @@ class Equations(QStringListModel):
         super().__init__(self, *args, **kwargs)
         self.data = [base_equation]
 
+    # Used as a slot
     def update(self, operation, operand):
         rc = self.rowCount()
         last_step = self.data(self.index(rc - 1, 0), 0)
