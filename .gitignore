@@ -1,3 +1,7 @@
 *.swp
 __pycache__
 */__pycache__
+pythot/resources_rc.py
+pythot/value_decimal.py
+pythot/value_fraction.py
+pythot/window.py
