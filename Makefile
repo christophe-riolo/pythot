@@ -2,6 +2,11 @@ RESOURCE_FILE = resources.qrc
 RESOURCE = pythot/resources_rc.py
 UI = pythot/window.py pythot/value_decimal.py pythot/value_fraction.py
 
+test:
+	python -m pythot.tests
+
+run:
+	python -m pythot
 all: ui resources
 
 ui: $(UI)
@@ -19,9 +24,6 @@ pythot/value_fraction.py:
 
 $(RESOURCE): $(RESOURCE_FILE)
 	pyrcc5  -o $(RESOURCE) $(RESOURCE_FILE)
-
-test:
-	python -m pythot.tests.test_equations
 
 clean:
 	rm -f $(RESOURCE) $(UI)

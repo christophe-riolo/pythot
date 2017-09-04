@@ -1,0 +1,4 @@
+(A) 2017-09-04 Implement a class inheriting QDialog, including the operation asked, for the operation modal window.
+(A) 2017-09-04 Derive QWidget for the operation modal window inputs, that can send a signal with operation and operand.
+(B) 2017-09-04 Create an `Operation` class that implements operation and operand.
+(B) 2017-09-04 Display Operation objects in the ListModel.
