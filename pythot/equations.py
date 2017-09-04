@@ -100,7 +100,8 @@ class Equation:
         l0, l1 = self.left.as_independent(x, as_Add=True)
         r0, r1 = self.right.as_independent(x, as_Add=True)
         return (l0 == 0 and l1 == x and self.right.is_number
-             or r0 == 0 and r1 == x and self.left.is_number)
+             or r0 == 0 and r1 == x and self.left.is_number
+             or self.left.is_number and self.right.is_number)
 
 
 class Equations(QStringListModel):
