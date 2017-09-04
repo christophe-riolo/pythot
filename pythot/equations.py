@@ -104,6 +104,19 @@ class Equation:
              or self.left.is_number and self.right.is_number)
 
 
+class Operation:
+    """Callable class that stores and applies an operation on
+    an equation.
+    """
+    def __call__(self, equation):
+        super().__init__()
+        self.operator(equation, self.operand)
+
+    def __init__(self, operator, operand):
+        self.operator = operator
+        self.operand = operand
+
+
 class Equations(QStringListModel):
     """List of all steps made so far to solve the equation.
     """
