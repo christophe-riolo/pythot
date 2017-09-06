@@ -556,8 +556,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>1020</width>
-           <height>421</height>
+           <width>1014</width>
+           <height>450</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
@@ -587,7 +587,7 @@
      <x>0</x>
      <y>0</y>
      <width>1034</width>
-     <height>32</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -619,7 +619,7 @@
    </widget>
    <widget class="QMenu" name="menuAffichage">
     <property name="title">
-     <string>Affichage</string>
+     <string>Affichag&amp;e</string>
     </property>
     <addaction name="actionMode_fraction"/>
     <addaction name="actionMode_d_cimal"/>
@@ -831,7 +831,7 @@
     <string>&amp;Mode fraction</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Q</string>
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="actionMode_d_cimal">
@@ -1245,6 +1245,70 @@
      <y>-1</y>
     </hint>
    </hints>
+  </connection>
+  <connection>
+   <sender>actionQuitter</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>516</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+	  <sender>actionAjouter_un_nombre</sender>
+	  <signal>triggered()</signal>
+	  <receiver>MainWindow</receiver>
+	  <slot>operationPrompt()</slot>
+  </connection>
+  <connection>
+	  <sender>actionAjouter_un_terme_en_x</sender>
+	  <signal>triggered()</signal>
+	  <receiver>MainWindow</receiver>
+	  <slot>operationPrompt()</slot>
+  </connection>
+  <connection>
+	  <sender>actionSoustraire_un_nombre</sender>
+	  <signal>triggered()</signal>
+	  <receiver>MainWindow</receiver>
+	  <slot>operationPrompt()</slot>
+  </connection>
+  <connection>
+	  <sender>actionSoustraire_un_terme_en_x</sender>
+	  <signal>triggered()</signal>
+	  <receiver>MainWindow</receiver>
+	  <slot>operationPrompt()</slot>
+  </connection>
+  <connection>
+	  <sender>actionMultiplier_par_un_nombre</sender>
+	  <signal>triggered()</signal>
+	  <receiver>MainWindow</receiver>
+	  <slot>operationPrompt()</slot>
+  </connection>
+  <connection>
+	  <sender>actionDiviser_par_un_nombre</sender>
+	  <signal>triggered()</signal>
+	  <receiver>MainWindow</receiver>
+	  <slot>operationPrompt()</slot>
+  </connection>
+  <connection>
+	  <sender>actionIntervertir_les_deux_membres</sender>
+	  <signal>triggered()</signal>
+	  <receiver>MainWindow</receiver>
+	  <slot>onActionInv()</slot>
+  </connection>
+  <connection>
+	  <sender>actionPrendre_l_oppos</sender>
+	  <signal>triggered()</signal>
+	  <receiver>MainWindow</receiver>
+	  <slot>onActionNeg()</slot>
   </connection>
  </connections>
 </ui>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>541</width>
-    <height>96</height>
+    <width>503</width>
+    <height>172</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,52 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
+   <item row="0" column="1">
+    <widget class="QWidget" name="value" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>50</width>
+       <height>70</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLineEdit" name="numerator">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="fraction_line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="denominator">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -44,7 +89,7 @@
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="text">
      <property name="font">
       <font>
        <family>Latin Modern Roman</family>
@@ -53,16 +98,6 @@
      </property>
      <property name="text">
       <string>Ajouter aux deux membres de l'équation :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QWidget" name="widget" native="true">
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>50</height>
-      </size>
      </property>
     </widget>
    </item>
@@ -76,7 +111,7 @@
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
    <receiver>operation</receiver>
-   <slot>hide()</slot>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>531</x>
@@ -92,7 +127,7 @@
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>operation</receiver>
-   <slot>hide()</slot>
+   <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>531</x>
@@ -107,7 +142,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>widget</receiver>
+   <receiver>numerator</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -116,7 +151,23 @@
     </hint>
     <hint type="destinationlabel">
      <x>390</x>
-     <y>33</y>
+     <y>45</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>denominator</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>251</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>79</y>
     </hint>
    </hints>
   </connection>
