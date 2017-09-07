@@ -64,6 +64,8 @@ class Pythot(QMainWindow, Ui_MainWindow):
 
         self.setupUi(self)
 
+        self.equations.setModel(self.equations_model)
+
     def onActionNeg(self):
         """Instanctiates an Operation on a request of negating the equation.
         """
