@@ -7,6 +7,10 @@ from sympy.abc import x
 from sympy.core.expr import Expr
 
 
+def prettymuldiv(o):
+    return str(o).replace("*", "×").replace("/", "÷")
+
+
 class Equation:
     """Inner representation of an equation.
     """
@@ -24,7 +28,10 @@ class Equation:
 
     def __str__(self):
         return (
-            " = ".join((str(self.left), str(self.right)))
+            " = ".join((
+                prettymuldiv(self.left),
+                prettymuldiv(self.right)
+            ))
             + ('<img src=":/icons/thot.ico" />' if self.isSolved() else "")
             )
 
@@ -155,13 +162,13 @@ class Operation:
 
     def __str__(self):
         if self.operator == add:
-            return '+ ' + str(self.operand)
+            return '+ ' + prettymuldiv(self.operand)
         if self.operator == sub:
-            return '- ' + str(self.operand)
+            return '- ' + prettymuldiv(self.operand)
         if self.operator == mul:
-            return '* ' + str(self.operand)
+            return '× ' + prettymuldiv(self.operand)
         if self.operator == truediv:
-            return '/ ' + str(self.operand)
+            return '÷ ' + prettymuldiv(self.operand)
         if self.operator == inv:
             return 'Inversion des membres.'
         if self.operator == neg:
@@ -181,9 +188,6 @@ class Equations(QStringListModel):
         last_step = self._data[-1]
         result = operation(last_step)
         self._data.extend([operation, result])
-        print(str(self._data[-2]))
-        print(str(self._data[-1]))
         self.setStringList(map(str, self._data))
-        print(self.stringList())
 
 # vim: fdm=indent
