@@ -24,8 +24,8 @@ class Equation:
 
     def __str__(self):
         return (
-            " = ".join(str(self.left), str(self.right))
-            + '<img src=":/icons/thot.ico" />' if self.isSolved() else ""
+            " = ".join((str(self.left), str(self.right)))
+            + ('<img src=":/icons/thot.ico" />' if self.isSolved() else "")
             )
 
     def __add__(self, other):
@@ -173,17 +173,14 @@ class Equations(QStringListModel):
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.data = []
+        self._data = [Equation()]
+        self.setStringList(map(str, self._data))
 
     # Used as a slot
     def update(self, operation):
-        rc = self.rowCount()
-        last_step = self.data(
-            self.index(rc - 1, Qt.DisplayRole),
-            Qt.DisplayRole)
+        last_step = self._data[-1]
         result = operation(last_step)
-        if self.insertRows(rc, 2):
-            self.setData(self.index(rc, Qt.DisplayRole), operation)
-            self.setData(self.index(rc + 1, Qt.DisplayRole), result)
+        self._data.extend([operation, result])
+        self.setStringList(map(str, self._data))
 
 # vim: fdm=indent

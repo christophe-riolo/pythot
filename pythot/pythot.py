@@ -5,6 +5,7 @@ Pythot : main window
 OperationPrompt: modal window used to ask the operation being made.
 """
 
+import re
 from operator import add, sub, mul, truediv, inv, neg
 from fractions import Fraction as F
 from sympy import S
@@ -16,6 +17,29 @@ from PyQt5.QtCore import pyqtSignal
 from .window import Ui_MainWindow
 from .operation import Ui_operation
 from .equations import Operation, Equations
+
+
+def str_to_fraction(numerator, denominator="1"):
+    """Simple function to make a fraction out of two strings.
+
+    >>> str_to_fraction("3,2")
+    3.2
+    >>> str_to_fraction("3", "4")
+    3/4
+    >>> type(str_to_fraction("3", "4"))
+    <class 'sympy.core.numbers.Rational'>
+    """
+
+    # Decimals may be written with a comma instead of dot (French style).
+    numerator = numerator.replace(",", ".")
+    denominator = denominator.replace(",", ".")
+
+    # Imposing compulsory zero before dot/comma
+    num = re.compile("\d+.?\d*")
+    if num.fullmatch(numerator) and num.fullmatch(denominator):
+        return S(F(F(numerator), F(denominator)))
+    else:
+        return None
 
 
 class Pythot(QMainWindow, Ui_MainWindow):
@@ -36,7 +60,7 @@ class Pythot(QMainWindow, Ui_MainWindow):
         super().__init__(*args, **kwargs)
 
         self.mode = "decimal"
-        self.equations = Equations(*args, **kwargs)
+        self.equations_model = Equations(*args, **kwargs)
 
         self.setupUi(self)
 
@@ -66,6 +90,7 @@ class OperationPrompt(QDialog, Ui_operation):
         super().__init__(parent)
 
         self.operator = operator
+        self._x = S("x") if x else 1
 
         self.setupUi(self)
 
@@ -81,6 +106,7 @@ class OperationPrompt(QDialog, Ui_operation):
         else:
             self.x.hide()
 
+        self.make_operation.connect(self.parent().equations_model.update)
 
     def retranslateUi(self, operation):
         """Sets the text left of the input accordingly to the
@@ -116,7 +142,7 @@ class OperationPrompt(QDialog, Ui_operation):
         self.make_operation.emit(
             Operation(
                 self.operator,
-                S(F(F(numerator), F(denominator)))
+                str_to_fraction(numerator, denominator) * self._x
             )
         )
         super().accept()
