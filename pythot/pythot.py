@@ -67,12 +67,12 @@ class Pythot(QMainWindow, Ui_MainWindow):
     def onActionNeg(self):
         """Instanctiates an Operation on a request of negating the equation.
         """
-        self.equations.update(Operation(neg))
+        self.equations_model.update(Operation(neg))
 
     def onActionInv(self):
         """Instanctiates an Operation on a request of inverting the equation.
         """
-        self.equations.update(Operation(inv))
+        self.equations_model.update(Operation(inv))
 
     def operationPrompt(self):
         """Starts the prompt to get the current operation."""

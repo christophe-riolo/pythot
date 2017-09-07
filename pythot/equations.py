@@ -160,7 +160,7 @@ class Operation:
             return '- ' + str(self.operand)
         if self.operator == mul:
             return '* ' + str(self.operand)
-        if self.operator == mul:
+        if self.operator == truediv:
             return '/ ' + str(self.operand)
         if self.operator == inv:
             return 'Inversion des membres.'
@@ -173,7 +173,7 @@ class Equations(QStringListModel):
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._data = [Equation()]
+        self._data = [Equation("4*x+2=-3*x-1")]
         self.setStringList(map(str, self._data))
 
     # Used as a slot
@@ -181,6 +181,9 @@ class Equations(QStringListModel):
         last_step = self._data[-1]
         result = operation(last_step)
         self._data.extend([operation, result])
+        print(str(self._data[-2]))
+        print(str(self._data[-1]))
         self.setStringList(map(str, self._data))
+        print(self.stringList())
 
 # vim: fdm=indent
