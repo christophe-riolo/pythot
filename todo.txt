@@ -1,10 +1,12 @@
-(A) Bind signal OperationPrompt.make_operation to slot Equations.update 
-(A) Link actions to executing an OperationPrompt
+x 2017-09-08 2017-09-05 (A) Bind signal OperationPrompt.make_operation to slot Equations.update 
+x 2017-09-07 2017-09-05(A) Link actions to executing an OperationPrompt
 (B) Implement tests for Equations
 (B) Implement tests for Operation
 (B) Implement tests for OperationPrompt
 (C) Add tests to Equation
-(D) Make the display of equations and operations better
+2017-09-08 (B) Make fractions better in Equations. 
+2017-09-08 (B) Correct bug of initial equation 0=0 not displaying on start. 
+x 2017-09-08 2017-09-05(D) Make the display of equations and operations better
 x 2017-09-05 2017-09-04 Create an `Operation` class that implements operation and operand.
 x 2017-09-05 2017-09-04 Display Operation objects in the ListModel.
 x 2017-09-05 2017-09-04 Implement a class inheriting QDialog, including the operation asked, for the operation modal window.
