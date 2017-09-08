@@ -1,14 +1,36 @@
-from PyQt5.QtCore import QStringListModel, Qt
-
+from PyQt5.QtWidgets import QLabel
 from operator import add, sub, neg, inv, mul, truediv
 
-from sympy import S
+from sympy import S, pretty
 from sympy.abc import x
 from sympy.core.expr import Expr
 
 
-def prettymuldiv(o):
-    return str(o).replace("*", "×").replace("/", "÷")
+def pretty_print(o, sign=True):
+    """Utility function that formats a singleton expression.
+
+    o: expression to format.
+    sign: whether the + sign should appear (true by default)
+    """
+    s = pretty(o)
+    s = s.replace("\n", "<br />")
+    if sign and o.as_coeff_mul(x)[0] >= 0:
+        s = "+" + s
+    return s
+
+
+def expr_to_cells(e, force_sign=False):
+    """Format an expression into cells for the table in Equations."""
+    e0, e1 = e.as_independent(x, as_Add=True)
+    if e0 and e1:
+        return (
+              "<td>" + pretty_print(e1, sign=force_sign or False) + "</td>"
+            + "<td>" + pretty_print(e0) + "</td>"
+            )
+    elif e1:
+        return "<td>" + pretty_print(e1, sign=force_sign or False) + "</td><td/>"
+    else:
+        return "<td/><td>" + pretty_print(e0, sign=force_sign or False) + "</td>"
 
 
 class Equation:
@@ -27,13 +49,15 @@ class Equation:
             self.left, self.right = map(S, s.split("="))
 
     def __str__(self):
-        return (
-            " = ".join((
-                prettymuldiv(self.left),
-                prettymuldiv(self.right)
-            ))
-            + ('<img src=":/icons/thot.ico" />' if self.isSolved() else "")
-            )
+        pieces = ["<tr>"]
+        pieces += expr_to_cells(self.left)
+        pieces += "<td> = </td>"
+        pieces += expr_to_cells(self.right)
+        pieces += '<td><img src=":/icons/icons/thot.ico" /></td>'\
+                  if self.isSolved()\
+                  else "<td />"
+        pieces += "</tr>\n"
+        return "".join(pieces)
 
     def __add__(self, other):
         res = Equation()
@@ -161,33 +185,95 @@ class Operation:
         self.operand = operand
 
     def __str__(self):
+        pieces = ['<tr class="operation">']
+
         if self.operator == add:
-            return '+ ' + prettymuldiv(self.operand)
+            pieces += expr_to_cells(self.operand, force_sign=True)
+            pieces += "<td />"
+            pieces += expr_to_cells(self.operand, force_sign=True)
         if self.operator == sub:
-            return '- ' + prettymuldiv(self.operand)
+            pieces += expr_to_cells(-self.operand, force_sign=True)
+            pieces += "<td />"
+            pieces += expr_to_cells(-self.operand, force_sign=True)
+
         if self.operator == mul:
-            return '× ' + prettymuldiv(self.operand)
+            pieces += "<td>× " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td>× " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td />"
+            pieces += "<td>× " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td>× " + pretty_print(self.operand, sign=False) + "</td>"
         if self.operator == truediv:
-            return '÷ ' + prettymuldiv(self.operand)
+            pieces += "<td>÷ " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td>÷ " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td />"
+            pieces += "<td>÷ " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td>÷ " + pretty_print(self.operand, sign=False) + "</td>"
+
         if self.operator == inv:
-            return 'Inversion des membres.'
+            pieces += '<td colspan="5">Inversion des membres.</td>'
         if self.operator == neg:
-            return 'Négation des membres.'
+            pieces += '<td colspan="5">Opposé des membres.</td>'
+
+        pieces += "</tr>\n"
+        return "".join(pieces)
 
 
-class Equations(QStringListModel):
+class Equations(QLabel):
     """List of all steps made so far to solve the equation.
     """
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._data = [Equation("4*x+2=-3*x-1")]
-        self.setStringList(map(str, self._data))
+    def __init__(self, parent):
+        self.data = [Equation()]
+        super().__init__(self.makeHTML(), parent)
 
-    # Used as a slot
-    def update(self, operation):
-        last_step = self._data[-1]
+    def update(self, operation=Operation(add, S(0))):
+        """Adds and apply an Operation to le list."""
+
+        last_step = self.data[-1]
         result = operation(last_step)
-        self._data.extend([operation, result])
-        self.setStringList(map(str, self._data))
+        self.data.extend([operation, result])
+        self.setText(self.makeHTML())
+
+    def makeHTML(self):
+        return ("""<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+            <html>
+            <head>
+            <meta name="qrichtext" content="1" />
+            <style type="text/css">
+            .frac { display: inline-block;
+                position: relative;
+                vertical-align: middle;
+                letter-spacing: 0.001em;
+                text-align: center;
+            }
+            .frac > span {
+                display: block;
+                padding: 0.1em;
+            }
+            .frac span.bottom {
+                border-top: thin solid black;
+            }
+            .frac span.symbol {
+                display: none;
+            }
+
+            td {
+                text-align: center;
+                vertical-align: middle;
+                padding: 0px 1em 0px 1em;
+            }
+
+            .operation > td {
+                color: red;
+            }
+            </style>
+            </head>
+            <body style=" font-family:'LM Roman 9'; font-size:16pt; font-weight:400; font-style:italic; text-align:center">
+            <table>
+            """
+            + "".join(map(str, self.data))
+            + """</table>
+            </body>
+            </html>
+            """)
 
 # vim: fdm=indent
