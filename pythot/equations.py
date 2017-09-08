@@ -223,7 +223,7 @@ class Equations(QLabel):
     """
     def __init__(self, parent):
         self.data = [Equation()]
-        super().__init__(self.makeHTML(), parent)
+        QLabel.__init__(self, self.makeHTML(), parent)
 
     def update(self, operation=Operation(add, S(0))):
         """Adds and apply an Operation to le list."""
@@ -275,5 +275,15 @@ class Equations(QLabel):
             </body>
             </html>
             """)
+
+    def clear_equation(self):
+        """Resets the equation to the basic 0=0 equation."""
+        self.data = [Equation()]
+        self.setText(self.makeHTML())
+
+    def cancel(self):
+        """Cancels the last operation."""
+        del self.data[-2:]
+        self.setText(self.makeHTML())
 
 # vim: fdm=indent

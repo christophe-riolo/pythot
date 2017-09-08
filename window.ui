@@ -572,6 +572,13 @@
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="Equations" name="equations">
+            <property name="font">
+             <font>
+              <family>LM Roman 9</family>
+              <pointsize>16</pointsize>
+              <italic>true</italic>
+             </font>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -1392,6 +1399,38 @@
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>onActionNeg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEffacer_l_quation</sender>
+   <signal>triggered()</signal>
+   <receiver>equations</receiver>
+   <slot>clear_equation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAnnuler</sender>
+   <signal>triggered()</signal>
+   <receiver>equations</receiver>
+   <slot>cancel()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
