@@ -1,6 +1,6 @@
 RESOURCE_FILE = resources.qrc
 RESOURCE = pythot/resources_rc.py
-UI_FILES = window.ui value_decimal.ui value_fraction.ui operation.ui
+UI_FILES = window.ui operation.ui
 UI = $(UI_FILES:%.ui=pythot/%.py)
 
 test:

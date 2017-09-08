@@ -24,6 +24,12 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -556,20 +562,21 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>1014</width>
-           <height>450</height>
+           <width>1020</width>
+           <height>421</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: white;</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QListView" name="equations">
-            <property name="font">
-             <font>
-              <stylestrategy>PreferAntialias</stylestrategy>
-             </font>
+           <widget class="Equations" name="equations">
+            <property name="text">
+             <string/>
             </property>
-            <property name="viewMode">
-             <enum>QListView::ListMode</enum>
+            <property name="alignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
             </property>
            </widget>
           </item>
@@ -587,7 +594,7 @@
      <x>0</x>
      <y>0</y>
      <width>1034</width>
-     <height>20</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -898,6 +905,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Equations</class>
+   <extends>QLabel</extends>
+   <header>pythot/equations.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>add_num</tabstop>
   <tabstop>sub_num</tabstop>
@@ -909,7 +923,6 @@
   <tabstop>opposite</tabstop>
   <tabstop>cancel</tabstop>
   <tabstop>scrollArea</tabstop>
-  <tabstop>equations</tabstop>
   <tabstop>open</tabstop>
   <tabstop>save</tabstop>
   <tabstop>new_equation</tabstop>
@@ -1263,52 +1276,132 @@
    </hints>
   </connection>
   <connection>
-	  <sender>actionAjouter_un_nombre</sender>
-	  <signal>triggered()</signal>
-	  <receiver>MainWindow</receiver>
-	  <slot>operationPrompt()</slot>
+   <sender>actionAjouter_un_nombre</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>operationPrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
-	  <sender>actionAjouter_un_terme_en_x</sender>
-	  <signal>triggered()</signal>
-	  <receiver>MainWindow</receiver>
-	  <slot>operationPrompt()</slot>
+   <sender>actionAjouter_un_terme_en_x</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>operationPrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
-	  <sender>actionSoustraire_un_nombre</sender>
-	  <signal>triggered()</signal>
-	  <receiver>MainWindow</receiver>
-	  <slot>operationPrompt()</slot>
+   <sender>actionSoustraire_un_nombre</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>operationPrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
-	  <sender>actionSoustraire_un_terme_en_x</sender>
-	  <signal>triggered()</signal>
-	  <receiver>MainWindow</receiver>
-	  <slot>operationPrompt()</slot>
+   <sender>actionSoustraire_un_terme_en_x</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>operationPrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
-	  <sender>actionMultiplier_par_un_nombre</sender>
-	  <signal>triggered()</signal>
-	  <receiver>MainWindow</receiver>
-	  <slot>operationPrompt()</slot>
+   <sender>actionMultiplier_par_un_nombre</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>operationPrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
-	  <sender>actionDiviser_par_un_nombre</sender>
-	  <signal>triggered()</signal>
-	  <receiver>MainWindow</receiver>
-	  <slot>operationPrompt()</slot>
+   <sender>actionDiviser_par_un_nombre</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>operationPrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
-	  <sender>actionIntervertir_les_deux_membres</sender>
-	  <signal>triggered()</signal>
-	  <receiver>MainWindow</receiver>
-	  <slot>onActionInv()</slot>
+   <sender>actionIntervertir_les_deux_membres</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionInv()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
-	  <sender>actionPrendre_l_oppos</sender>
-	  <signal>triggered()</signal>
-	  <receiver>MainWindow</receiver>
-	  <slot>onActionNeg()</slot>
+   <sender>actionPrendre_l_oppos</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onActionNeg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
  </connections>
 </ui>

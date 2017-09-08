@@ -16,7 +16,7 @@ from PyQt5.QtCore import pyqtSignal
 
 from .window import Ui_MainWindow
 from .operation import Ui_operation
-from .equations import Operation, Equations
+from .equations import Operation
 
 
 def str_to_fraction(numerator, denominator="1"):
@@ -35,7 +35,7 @@ def str_to_fraction(numerator, denominator="1"):
     denominator = denominator.replace(",", ".")
 
     # Imposing compulsory zero before dot/comma
-    num = re.compile("\d+.?\d*")
+    num = re.compile("-?\d+.?\d*")
     if num.fullmatch(numerator) and num.fullmatch(denominator):
         return S(F(F(numerator), F(denominator)))
     else:
@@ -60,21 +60,18 @@ class Pythot(QMainWindow, Ui_MainWindow):
         super().__init__(*args, **kwargs)
 
         self.mode = "decimal"
-        self.equations_model = Equations(*args, **kwargs)
 
         self.setupUi(self)
-
-        self.equations.setModel(self.equations_model)
 
     def onActionNeg(self):
         """Instanctiates an Operation on a request of negating the equation.
         """
-        self.equations_model.update(Operation(neg))
+        self.equations.update(Operation(neg))
 
     def onActionInv(self):
         """Instanctiates an Operation on a request of inverting the equation.
         """
-        self.equations_model.update(Operation(inv))
+        self.equations.update(Operation(inv))
 
     def operationPrompt(self):
         """Starts the prompt to get the current operation."""
@@ -108,7 +105,7 @@ class OperationPrompt(QDialog, Ui_operation):
         else:
             self.x.hide()
 
-        self.make_operation.connect(self.parent().equations_model.update)
+        self.make_operation.connect(self.parent().equations.update)
 
     def retranslateUi(self, operation):
         """Sets the text left of the input accordingly to the
@@ -156,5 +153,7 @@ class OperationPrompt(QDialog, Ui_operation):
     def toFraction(self):
         self.fraction_line.show()
         self.denominator.show()
+
+from . import resources_rc
 
 # vim: fdm=indent
