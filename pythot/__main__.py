@@ -8,12 +8,15 @@ from .import pythot
 
 
 app = QApplication(sys.argv)
-main_window = pythot.Pythot()
 
 QFontDatabase.addApplicationFont(":/fonts/lmroman10-bolditalic.otf")
 QFontDatabase.addApplicationFont(":/fonts/lmroman10-regular.otf")
 
+main_window = pythot.Pythot()
 main_window.show()
+
+# Dirty hack to finally display the first equation.
+main_window.actionAnnuler.trigger()
 sys.exit(app.exec_())
 
 # vim: fdm=indent

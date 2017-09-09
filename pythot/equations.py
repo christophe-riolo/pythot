@@ -283,7 +283,8 @@ class Equations(QLabel):
 
     def cancel(self):
         """Cancels the last operation."""
-        del self.data[-2:]
+        if len(self.data) >= 3:
+            del self.data[-2:]
         self.setText(self.makeHTML())
 
 # vim: fdm=indent
