@@ -35,6 +35,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
        <widget class="QPushButton" name="open">
+        <property name="toolTip">
+         <string>Ouvrir une équation (CTRL+O)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -55,6 +58,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="save">
+        <property name="toolTip">
+         <string>Enregistrer l'équation (CTRL+S)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -82,6 +88,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="new_equation">
+        <property name="toolTip">
+         <string>Nouvelle équation (CTRL+N)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -102,6 +111,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="random">
+        <property name="toolTip">
+         <string>Équation au hasard (CTRL+H)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -122,6 +134,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="empty">
+        <property name="toolTip">
+         <string>Effacer l'équation (CTRL+E)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -154,6 +169,9 @@
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="toolTip">
+         <string>Mode fraction (CTRL+F)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -178,6 +196,9 @@
          <font>
           <pointsize>16</pointsize>
          </font>
+        </property>
+        <property name="toolTip">
+         <string>Mode  décimal (CTRL+D)</string>
         </property>
         <property name="text">
          <string/>
@@ -206,6 +227,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="zoom_in">
+        <property name="toolTip">
+         <string>Agrandir le texte (CTRL++)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -226,6 +250,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="zoom_out">
+        <property name="toolTip">
+         <string>Rétrécir le texte(CTRL+-)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -253,6 +280,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="help">
+        <property name="toolTip">
+         <string>Aide de pythot (F1)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -273,6 +303,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="about">
+        <property name="toolTip">
+         <string>A propos de Pythot</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -297,6 +330,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
        <widget class="QPushButton" name="add_num">
+        <property name="toolTip">
+         <string>Ajouter un nombre (+)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -324,6 +360,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="sub_num">
+        <property name="toolTip">
+         <string>Soustraire un nombre (-)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -351,6 +390,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="add_x">
+        <property name="toolTip">
+         <string>Ajouter un terme en x (P)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -378,6 +420,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="sub_x">
+        <property name="toolTip">
+         <string>Soustraire un terme en x (M)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -405,6 +450,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="mult">
+        <property name="toolTip">
+         <string>Multiplier les deux membres par un nombre (*)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -432,6 +480,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="div">
+        <property name="toolTip">
+         <string>Diviser les deux membres par un nombre (/)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -459,6 +510,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="exchange">
+        <property name="toolTip">
+         <string>Intervertir les deux membres (I)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -491,6 +545,9 @@
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="toolTip">
+         <string>Changer le signe des deux membres (O)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -518,6 +575,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="cancel">
+        <property name="toolTip">
+         <string>Annuler le dernier calcul (Suppr)</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -1421,8 +1481,8 @@
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>25</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -1437,10 +1497,16 @@
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>25</x>
+     <y>165</y>
     </hint>
    </hints>
+  </connection>
+  <connection>
+   <sender>action_quation_au_hasard</sender>
+   <signal>triggered()</signal>
+   <receiver>equations</receiver>
+   <slot>randomEquation()</slot>
   </connection>
  </connections>
 </ui>

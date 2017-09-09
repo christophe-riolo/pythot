@@ -59,9 +59,8 @@ class Pythot(QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.mode = "decimal"
-
         self.setupUi(self)
+        self.toDecimal()
 
     def onActionNeg(self):
         """Instanctiates an Operation on a request of negating the equation.
@@ -73,10 +72,20 @@ class Pythot(QMainWindow, Ui_MainWindow):
         """
         self.equations.update(Operation(inv))
 
+    def toFraction(self):
+        self.mode = "fraction"
+        self.statusbar.showMessage("Mode : fraction")
+
+    def toDecimal(self):
+        self.mode = "decimal"
+        self.statusbar.showMessage("Mode : decimal")
+
     def operationPrompt(self):
         """Starts the prompt to get the current operation."""
         sender = self.sender().objectName()
         prompt = OperationPrompt(self, **Pythot.operation_actions[sender])
+        self.actionMode_fraction.triggered.connect(prompt.toFraction)
+        self.actionMode_d_cimal.triggered.connect(prompt.toDecimal)
         prompt.exec()
 
 
@@ -134,7 +143,7 @@ class OperationPrompt(QDialog, Ui_operation):
         numerator = numerator if numerator else "0"
         denominator = (
                 denominator
-                if denominator and self.mode == "fraction"
+                if denominator and self.parent().mode == "fraction"
                 else "1"
                 )
 
