@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QLabel
 from operator import add, sub, neg, inv, mul, truediv
+from random import randint
 
 from sympy import S, pretty
 from sympy.abc import x
@@ -36,13 +37,16 @@ def expr_to_cells(e, force_sign=False):
 class Equation:
     """Inner representation of an equation.
     """
-    def __init__(self, s=""):
+    def __init__(self, s="", random=False):
         """Takes a string in the form "expr1 = expr2" and makes
         an Equation object from it.
         If the string is empty, assumes "0 = 0".
         """
 
-        if s == "":
+        if random:
+            self.left = randint(1, 9) * x + randint(1, 9)
+            self.right = randint(1, 9) * x + randint(1, 9)
+        elif s == "":
             self.left = S("0")
             self.right = S("0")
         else:
@@ -224,6 +228,10 @@ class Equations(QLabel):
     def __init__(self, parent):
         self.data = [Equation()]
         QLabel.__init__(self, self.makeHTML(), parent)
+
+    def randomEquation(self):
+        self.data = [Equation(random=True)]
+        self.setText(self.makeHTML())
 
     def update(self, operation=Operation(add, S(0))):
         """Adds and apply an Operation to le list."""
