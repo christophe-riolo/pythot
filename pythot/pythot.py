@@ -17,6 +17,7 @@ from PyQt5.QtCore import pyqtSignal
 from .window import Ui_MainWindow
 from .operation import Ui_operation
 from .equations import Operation
+from .about import Ui_about
 
 
 def str_to_fraction(numerator, denominator="1"):
@@ -87,6 +88,16 @@ class Pythot(QMainWindow, Ui_MainWindow):
         self.actionMode_fraction.triggered.connect(prompt.toFraction)
         self.actionMode_d_cimal.triggered.connect(prompt.toDecimal)
         prompt.exec()
+
+    def aboutWindow(self):
+        about = About(self)
+        about.show()
+
+
+class About(QDialog, Ui_about):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.setupUi(self)
 
 
 class OperationPrompt(QDialog, Ui_operation):

@@ -1508,5 +1508,11 @@
    <receiver>equations</receiver>
    <slot>randomEquation()</slot>
   </connection>
+  <connection>
+   <sender>actionA_propos</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>aboutWindow()</slot>
+  </connection>
  </connections>
 </ui>
