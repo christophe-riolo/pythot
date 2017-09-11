@@ -41,14 +41,11 @@ Les erreurs fréquentes sont les suivantes :
 Version du programme
 ====================
 
-La **version 0.7** du programme **Pythot** est compilée pour les systèmes
-d'exploitation Windows95, Windows98, Windows2000 et WindowsXP. Elle requiert les polices
-MS Sans Serif et Tahoma et fonctionne pour des résolutions d'écran allant de 640/480 à
-1440/900. Le fichier d'aide associé au programme se nomme AideTHOT.hlp.
+La **version 0.7** du programme **Pythot** est écrite en Python 3 et utilise PyQt.
 
-L'adresse du site de téléchargement est :
+Elle est basée sur le logiciel Thot d'Emmanuel Morand : http://www.emmanuelmorand.net
 
-*http://www.emmanuelmorand.net*
+Le code source est disponible sur GitHub : https://github.com/christophe-riolo/pythot/
 
 Zone de travail
 ===============
@@ -59,7 +56,7 @@ présence sur leur droite de l'icône du programme, le type de l'ensemble des so
 signalé lorsque l'on déplace le curseur de la souris sur celle-ci.
 
 L'affichage comporte deux modes possibles : le **mode fraction** ou le **mode décimal**,
-le mode en cours est affiché dans la barre d'état. 
+le mode en cours est affiché dans la barre d'état.
 
 La taille d'affichage peut être modifiée à l'aide des boutons *Agrandir* et *Réduire* de
 la première barre d'outils horizontale, elle est affichée dans la barre d'état.
