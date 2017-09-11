@@ -11,7 +11,7 @@ from fractions import Fraction as F
 from sympy import S
 
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QMainWindow, QDialog
+from PyQt5.QtWidgets import QMainWindow, QDialog, QWidget, QTextBrowser
 from PyQt5.QtCore import pyqtSignal
 
 from .window import Ui_MainWindow
@@ -173,6 +173,14 @@ class OperationPrompt(QDialog, Ui_operation):
     def toFraction(self):
         self.fraction_line.show()
         self.denominator.show()
+
+
+class HelpWindow(QWidget, Ui_HelpWindow):
+    pass
+
+
+class HelpBrowser(QTextBrowser):
+    pass
 
 from . import resources_rc
 
