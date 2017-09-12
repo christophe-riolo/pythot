@@ -169,7 +169,13 @@ class Operation:
         else:
             return self.operator(equation, self.operand)
 
-    def __init__(self, operator, operand=None):
+    def __new__(cls, s=None, operator=None, operand=None):
+        if s is not None:
+            return cls.from_repr(s)
+        else:
+            return super().__new__(cls)
+
+    def __init__(self, s=None, operator=None, operand=None):
         """Creates an operation wating to be applied to an equation.
 
         The operator has to be a function from module operator.
@@ -178,6 +184,9 @@ class Operation:
         and no operand will be accepted for neg and inv. If this
         is not respected, an AttributeError will be raised.
         """
+
+        if s is not None:
+            return
 
         # Testing the arguments.
         if operator in [inv, neg] and operand is not None:
@@ -247,17 +256,17 @@ class Operation:
         if m is None:
             raise ValueError("String is not a valid representation of an operation.")
         if m[1] == "+":
-            return cls(add, S(m[2]))
+            return cls(operator=add, operand=S(m[2]))
         if m[1] == "-" and m[2]:
-            return cls(sub, S(m[2]))
+            return cls(operator=sub, operand=S(m[2]))
         if m[1] == "-":
-            return cls(neg)
+            return cls(operator=neg)
         if m[1] == "*":
-            return cls(mul, S(m[2]))
+            return cls(operator=mul, operand=S(m[2]))
         if m[1] == "/":
-            return cls(truediv, S(m[2]))
+            return cls(operator=truediv, operand=S(m[2]))
         if m[1] == "~":
-            return cls(inv)
+            return cls(operator=inv)
 
 
 class Equations(QLabel):
@@ -267,12 +276,20 @@ class Equations(QLabel):
         self.data = [Equation()]
         QLabel.__init__(self, self.makeHTML(), parent)
 
+    def __repr__(self):
+        def contructor(item):
+            return type(item).__name__ + "('" + repr(item) + "')"
+        ret = ["["]
+        ret.extend((contructor(item) + "," for item in self.data[:-1]))
+        ret += [constructor(self.data[-1]), "]"]
+        return "\n".join(ret)
+
     def randomEquation(self):
         self.data = [Equation(random=True)]
         self.setText(self.makeHTML())
 
-    def update(self, operation=Operation(add, S(0))):
-        """Adds and apply an Operation to le list."""
+    def update(self, operation=Operation(operator=add, operand=S(0))):
+        """Adds and apply an Operation to the list."""
 
         last_step = self.data[-1]
         result = operation(last_step)

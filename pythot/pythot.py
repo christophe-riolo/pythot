@@ -66,12 +66,12 @@ class Pythot(QMainWindow, Ui_MainWindow):
     def onActionNeg(self):
         """Instanctiates an Operation on a request of negating the equation.
         """
-        self.equations.update(Operation(neg))
+        self.equations.update(Operation(operator=neg))
 
     def onActionInv(self):
         """Instanctiates an Operation on a request of inverting the equation.
         """
-        self.equations.update(Operation(inv))
+        self.equations.update(Operation(operator=inv))
 
     def toFraction(self):
         self.mode = "fraction"
@@ -160,8 +160,8 @@ class OperationPrompt(QDialog, Ui_operation):
 
         self.make_operation.emit(
             Operation(
-                self.operator,
-                str_to_fraction(numerator, denominator) * self._x
+                operator=self.operator,
+                operand=str_to_fraction(numerator, denominator) * self._x
             )
         )
         super().accept()
