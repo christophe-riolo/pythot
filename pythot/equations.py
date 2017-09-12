@@ -1,6 +1,8 @@
-from PyQt5.QtWidgets import QLabel
-from operator import add, sub, neg, inv, mul, truediv
+import re
 from random import randint
+from operator import add, sub, neg, inv, mul, truediv
+
+from PyQt5.QtWidgets import QLabel
 
 from sympy import S, pretty
 from sympy.abc import x
@@ -62,6 +64,9 @@ class Equation:
                   else "<td />"
         pieces += "</tr>\n"
         return "".join(pieces)
+
+    def __repr__(self):
+        return str(self.left) + '=' + str(self.right)
 
     def __add__(self, other):
         res = Equation()
@@ -220,6 +225,39 @@ class Operation:
 
         pieces += "</tr>\n"
         return "".join(pieces)
+
+    def __repr__(self):
+        if self.operator == add:
+            return "+(" + repr(self.operand) + ")"
+        if self.operator == sub:
+            return "-(" + repr(self.operand) + ")"
+        if self.operator == mul:
+            return "*(" + repr(self.operand) + ")"
+        if self.operator == truediv:
+            return "/(" + repr(self.operand) + ")"
+        if self.operator == inv:
+            return "~"
+        if self.operator == neg:
+            return "-"
+
+    @classmethod
+    def from_repr(cls, s):
+        """Makes an Operation object from a string"""
+        m = re.fullmatch("([+\-*/~])(\([\dx[+\-*/ ]+\))?", s)
+        if m is None:
+            raise ValueError("String is not a valid representation of an operation.")
+        if m[1] == "+":
+            return cls(add, S(m[2]))
+        if m[1] == "-" and m[2]:
+            return cls(sub, S(m[2]))
+        if m[1] == "-":
+            return cls(neg)
+        if m[1] == "*":
+            return cls(mul, S(m[2]))
+        if m[1] == "/":
+            return cls(truediv, S(m[2]))
+        if m[1] == "~":
+            return cls(inv)
 
 
 class Equations(QLabel):
