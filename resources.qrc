@@ -25,4 +25,8 @@
     <file>fonts/lmroman10-regular.otf</file>
     <file>fonts/lmroman10-bolditalic.otf</file>
   </qresource>
+  <qresource prefix="doc">
+      <file alias="doc.qhc">pythot/doc/doc.qhc</file>
+      <file alias="doc.qch">pythot/doc/doc.qch</file>
+  </qresource>
 </RCC>

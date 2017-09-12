@@ -2,7 +2,7 @@ VERSION = 0.7.1
 DATE = 12/09/2017
 RESOURCE_FILE = resources.qrc
 RESOURCE = pythot/resources_rc.py
-UI_FILES = window.ui operation.ui about.ui
+UI_FILES = window.ui operation.ui about.ui help.ui
 UI = $(UI_FILES:%.ui=pythot/%.py)
 README = README.rst
 HELP_FILES = pythot/doc/doc.qch pythot/doc/doc.qhc
@@ -36,13 +36,13 @@ $(RESOURCE): $(RESOURCE_FILE)
 	pyrcc5  -o $(RESOURCE) $(RESOURCE_FILE)
 
 # Help files compiling ---------------------------
-pythot/doc/doc.qhc: help/project.qhcp help/doc.qch
+pythot/doc/doc.qhc: help/project.qhcp pythot/doc/doc.qch
 	qcollectiongenerator -o $@ $<
 
 pythot/doc/doc.qch: help/project.qhp
 	qhelpgenerator -o $@ $<
 
-help/doc.qhcp help/doc.qhp: $(README)
+help/project.qhcp help/project.qhp: $(README)
 	mkdir -p help
 	python2 rst2qhc.py $< -o help \
 	    --namespace math.pythot \

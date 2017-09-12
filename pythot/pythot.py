@@ -13,6 +13,7 @@ from sympy import S
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMainWindow, QDialog, QWidget, QTextBrowser
 from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtHelp import QHelpEngine
 
 from .window import Ui_MainWindow
 from .operation import Ui_operation
@@ -180,7 +181,15 @@ class HelpWindow(QWidget, Ui_HelpWindow):
 
 
 class HelpBrowser(QTextBrowser):
-    pass
+    def __init__(self):
+        self.help_engine = QHelpEngine(":/help/doc.qhc")  # TODO
+
+    def loadResource(self, type_, name):
+        if name.scheme() == "qthelp":
+            return self.help_engine.fileData(name)
+        else:
+            return super().loadResource(type_, name)
+
 
 from . import resources_rc
 
