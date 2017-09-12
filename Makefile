@@ -1,9 +1,11 @@
-VERSION = 0.7
+VERSION = 0.7.1
+DATE = 12/09/2017
 RESOURCE_FILE = resources.qrc
 RESOURCE = pythot/resources_rc.py
 UI_FILES = window.ui operation.ui about.ui
 UI = $(UI_FILES:%.ui=pythot/%.py)
-HELP = help/aide.html help/doc.qch help/doc.qhc help/doc.qhp help/project.qhp help/doc.qhcp
+README = README.rst
+HELP_FILES = pythot/doc/doc.qch pythot/doc/doc.qhc
 
 test:
 	python -m pythot.tests
@@ -11,35 +13,44 @@ test:
 run: all
 	python -m pythot
 
-all: ui resources
+all: version ui resources help
 
 ui: $(UI)
 
 resources: $(RESOURCE)
 
+help: $(HELP_FILES)
+
+# version updating -------------------------------
+version:
+	sed -E -i "s/Pythot v[[:digit:]]+(.[[:digit:]]+)*/Pythot v$(VERSION)/" about.ui
+	sed -E -i "s#[[:digit:]]{2}/[[:digit:]]{2}/[[:digit:]]{4}#$(DATE)#" about.ui
+	sed -E -i "s/version [[:digit:]]+(.[[:digit:]]+)*/version $(VERSION)/" README.rst
+
+# UI compiling -----------------------------------
 pythot/%.py: %.ui
 	pyuic5 --from-imports -o $@ $<
 
+# Resources compiling ----------------------------
 $(RESOURCE): $(RESOURCE_FILE)
 	pyrcc5  -o $(RESOURCE) $(RESOURCE_FILE)
 
-help: help/doc.qhc
-
-help/doc.qhc: help/doc.qhcp help/doc.qch
+# Help files compiling ---------------------------
+pythot/doc/doc.qhc: help/project.qhcp help/doc.qch
 	qcollectiongenerator -o $@ $<
 
-help/doc.qch: help/doc.qhp
+pythot/doc/doc.qch: help/project.qhp
 	qhelpgenerator -o $@ $<
 
-help/doc.qhcp help/doc.qhp: aide.rst
+help/doc.qhcp help/doc.qhp: $(README)
 	mkdir -p help
 	python2 rst2qhc.py $< -o help \
 	    --namespace math.pythot \
 	    --customfilter "Pythot $(VERSION)"\
 	    --create-qhcp\
 	    --filterattributes pythot:0.7
-	mv help/project.qhp help/doc.qhp
-	mv help/project.qhcp help/doc.qhcp
 
+# Cleaning ---------------------------------------
 clean:
-	rm -f $(RESOURCE) $(UI) $(HELP)
+	rm -f $(RESOURCE) $(UI)
+	rm -R help
