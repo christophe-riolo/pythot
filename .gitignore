@@ -6,3 +6,4 @@ pythot/value_decimal.py
 pythot/value_fraction.py
 pythot/window.py
 pythot/operation.py
+pythot/about.py

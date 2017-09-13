@@ -5,7 +5,8 @@
 (C) 2017-09-05 Implement tests for Equations
 (C) 2017-09-05 Implement tests for Operation
 (C) 2017-09-05 Implement tests for OperationPrompt
-(C) Add tests to Equation
+(C) 2017-09-05 Add tests to Equation
+(C) 2017-09-13 Check repr structure before evaluating it +from_repr @equations.py
 x (A) 2017-09-07Link actions to executing an OperationPrompt
 x (A) 2017-09-08 2017-09-05 Bind signal OperationPrompt.make_operation to slot Equations.update
 x (B) 2017-09-09 2017-09-08 Correct bug of initial equation 0=0 not displaying on start.
