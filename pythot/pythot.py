@@ -11,7 +11,7 @@ from fractions import Fraction as F
 from sympy import S
 
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QMainWindow, QDialog
+from PyQt5.QtWidgets import QMainWindow, QDialog, QFileDialog
 from PyQt5.QtCore import pyqtSignal
 
 from .window import Ui_MainWindow
@@ -92,6 +92,26 @@ class Pythot(QMainWindow, Ui_MainWindow):
     def aboutWindow(self):
         about = About(self)
         about.show()
+
+    def savePrompt(self):
+        filename = QFileDialog.getSaveFileName(
+                self,
+                "Sauvegarder un fichier équations",
+                "*.ptht",
+                "Pythot files (*.ptht)")
+        if filename == ('', ''):
+            return
+        self.equations.saveToFile(*filename)
+
+    def openPrompt(self):
+        filename = QFileDialog.getOpenFileName(
+                self,
+                "Ouvrir un fichier équations",
+                "*.ptht",
+                "Pythot files (*.ptht)")
+        if filename == ('', ''):
+            return
+        self.equations.loadFromFile(*filename)
 
 
 class About(QDialog, Ui_about):

@@ -1514,5 +1514,17 @@
    <receiver>MainWindow</receiver>
    <slot>aboutWindow()</slot>
   </connection>
+  <connection>
+   <sender>actionOuvrir_un_fichier_quations</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openPrompt()</slot>
+  </connection>
+  <connection>
+   <sender>actionSauvegarder_un_fichier_quation</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>savePrompt()</slot>
+  </connection>
  </connections>
 </ui>

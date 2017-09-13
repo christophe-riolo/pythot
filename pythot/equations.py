@@ -66,7 +66,9 @@ class Equation:
         return "".join(pieces)
 
     def __repr__(self):
-        return str(self.left) + '=' + str(self.right)
+        return "Equation('"\
+               + str(self.left) + '=' + str(self.right)\
+               + "')"
 
     def __add__(self, other):
         res = Equation()
@@ -236,18 +238,21 @@ class Operation:
         return "".join(pieces)
 
     def __repr__(self):
+        ret = "Operation('"
         if self.operator == add:
-            return "+(" + repr(self.operand) + ")"
+            ret += "+(" + repr(self.operand) + ")"
         if self.operator == sub:
-            return "-(" + repr(self.operand) + ")"
+            ret += "-(" + repr(self.operand) + ")"
         if self.operator == mul:
-            return "*(" + repr(self.operand) + ")"
+            ret += "*(" + repr(self.operand) + ")"
         if self.operator == truediv:
-            return "/(" + repr(self.operand) + ")"
+            ret += "/(" + repr(self.operand) + ")"
         if self.operator == inv:
-            return "~"
+            ret += "~"
         if self.operator == neg:
-            return "-"
+            ret += "-"
+        ret += "')"
+        return ret
 
     @classmethod
     def from_repr(cls, s):
@@ -272,16 +277,14 @@ class Operation:
 class Equations(QLabel):
     """List of all steps made so far to solve the equation.
     """
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         self.data = [Equation()]
         QLabel.__init__(self, self.makeHTML(), parent)
 
     def __repr__(self):
-        def contructor(item):
-            return type(item).__name__ + "('" + repr(item) + "')"
         ret = ["["]
-        ret.extend((contructor(item) + "," for item in self.data[:-1]))
-        ret += [constructor(self.data[-1]), "]"]
+        ret.extend((repr(item) + "," for item in self.data[:-1]))
+        ret += [repr(self.data[-1]), "]"]
         return "\n".join(ret)
 
     def randomEquation(self):
@@ -349,5 +352,28 @@ class Equations(QLabel):
         if len(self.data) >= 3:
             del self.data[-2:]
         self.setText(self.makeHTML())
+
+    def loadFromRepr(self, s):
+        self.data = eval(s)
+        self.setText(self.makeHTML())
+
+    def loadFromFile(self, fname, filter_):
+        r = re.compile("\(\*(.p?tht)\)$")
+        if re.search(".p?tht$", fname):
+            with open(fname, 'r', encoding="utf-8") as f:
+                self.loadFromRepr(f.read())
+        else:
+            with open(fname + r.search(filter_)[1], 'r', encoding="utf-8") as f:
+                self.loadFromRepr(f.read())
+
+    def saveToFile(self, fname, filter_):
+        r = re.compile("\(\*(.p?tht)\)$")
+        if r.search(fname):
+            with open(fname, 'w', encoding="utf-8") as f:
+                f.write(repr(self))
+        else:
+            print(filter_)
+            with open(fname + r.search(filter_)[1], 'w', encoding="utf-8") as f:
+                f.write(repr(self))
 
 # vim: fdm=indent
