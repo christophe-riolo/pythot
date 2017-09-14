@@ -2,9 +2,11 @@ from PyQt5.QtWidgets import QLabel
 from operator import add, sub, neg, inv, mul, truediv
 from random import randint
 
-from sympy import S, pretty
+from sympy import S, pretty, solveset
 from sympy.abc import x
 from sympy.core.expr import Expr
+from sympy.sets.sets import FiniteSet, EmptySet
+from sympy.sets.fancysets import Complexes
 
 
 def pretty_print(o, sign=True):
@@ -57,7 +59,7 @@ class Equation:
         pieces += expr_to_cells(self.left)
         pieces += "<td> = </td>"
         pieces += expr_to_cells(self.right)
-        pieces += '<td><img src=":/icons/icons/thot.ico" /></td>'\
+        pieces += '<td><img src=":/icons/thot.ico" alt="' + self.nSolutions() + '"/></td>'\
                   if self.isSolved()\
                   else "<td />"
         pieces += "</tr>\n"
@@ -150,6 +152,16 @@ class Equation:
         return (l0 == 0 and l1 == x and self.right.is_number
              or r0 == 0 and r1 == x and self.left.is_number
              or self.left.is_number and self.right.is_number)
+
+    def nSolutions(self):
+        solutionset = solveset(self.left - self.right)
+        if isinstance(solutionset, EmptySet):
+            return "L'équation n'a pas de solution."
+        if isinstance(solutionset, FiniteSet):
+            return "L'équation a une unique solution : "\
+                   + list(solutionset)[0] + "."
+        if isinstance(solutionset, Complexes):
+            return "L'équation a une infinité de solutions."
 
 
 class Operation:

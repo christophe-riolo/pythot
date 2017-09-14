@@ -6,6 +6,7 @@ OperationPrompt: modal window used to ask the operation being made.
 """
 
 import re
+from os.path import dirname
 from operator import add, sub, mul, truediv, inv, neg
 from fractions import Fraction as F
 from sympy import S
@@ -94,6 +95,9 @@ class Pythot(QMainWindow, Ui_MainWindow):
         about = About(self)
         about.show()
 
+    def showHelp(self):
+        HelpWindow().show()
+
 
 class About(QDialog, Ui_about):
     def __init__(self, parent):
@@ -176,13 +180,10 @@ class OperationPrompt(QDialog, Ui_operation):
         self.denominator.show()
 
 
-class HelpWindow(QWidget, Ui_HelpWindow):
-    pass
-
-
 class HelpBrowser(QTextBrowser):
-    def __init__(self):
-        self.help_engine = QHelpEngine(":/help/doc.qhc")  # TODO
+    def __init__(self, help_engine):
+        super().__init__()
+        self.help_engine = help_engine
 
     def loadResource(self, type_, name):
         if name.scheme() == "qthelp":
@@ -190,6 +191,19 @@ class HelpBrowser(QTextBrowser):
         else:
             return super().loadResource(type_, name)
 
+
+from .help import Ui_HelpWindow
+
+
+class HelpWindow(QWidget, Ui_HelpWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.help_engine = QHelpEngine(dirname(__file__)  + "/doc/doc.qhc")
+        self.help_engine.setupData()
+        self.helpBrowser = HelpBrowser(self.help_engine)
+        self.contents = self.help_engine.contentWidget()
+        self.index = self.help_engine.indexWidget()
 
 from . import resources_rc
 

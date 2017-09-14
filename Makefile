@@ -13,7 +13,7 @@ test:
 run: all
 	python -m pythot
 
-all: version ui resources help
+all: version ui resources pythot/doc
 
 ui: $(UI)
 
@@ -36,15 +36,15 @@ $(RESOURCE): $(RESOURCE_FILE)
 	pyrcc5  -o $(RESOURCE) $(RESOURCE_FILE)
 
 # Help files compiling ---------------------------
-pythot/doc/doc.qhc: help/project.qhcp pythot/doc/doc.qch
+pythot/doc/doc.qhc: pythot/doc/project.qhcp pythot/doc/doc.qch
 	qcollectiongenerator -o $@ $<
 
-pythot/doc/doc.qch: help/project.qhp
+pythot/doc/doc.qch: pythot/doc/project.qhp
 	qhelpgenerator -o $@ $<
 
-help/project.qhcp help/project.qhp: $(README)
-	mkdir -p help
-	python2 rst2qhc.py $< -o help \
+pythot/doc/project.qhcp pythot/doc/project.qhp: $(README)
+	mkdir -p pythot/doc
+	python2 rst2qhc.py $< -o pythot/doc \
 	    --namespace math.pythot \
 	    --customfilter "Pythot $(VERSION)"\
 	    --create-qhcp\
@@ -53,4 +53,4 @@ help/project.qhcp help/project.qhp: $(README)
 # Cleaning ---------------------------------------
 clean:
 	rm -f $(RESOURCE) $(UI)
-	rm -R help
+	rm -R pythot/doc

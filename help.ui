@@ -14,12 +14,12 @@
    <string>Manuel</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset>
     <normaloff>:/icons/icons/book.svg</normaloff>:/icons/icons/book.svg</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <widget class="QTabWidget" name="tabWidget">
+    <widget class="QTabWidget" name="navigation">
      <property name="maximumSize">
       <size>
        <width>300</width>
@@ -42,7 +42,7 @@
     </widget>
    </item>
    <item>
-    <widget class="HelpBrowser" name="textBrowser"/>
+    <widget class="HelpBrowser" name="helpBrowser"/>
    </item>
   </layout>
  </widget>
