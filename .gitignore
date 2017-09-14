@@ -1,6 +1,9 @@
 *.swp
 __pycache__
 */__pycache__
+pythot/doc/*
+Session.vim
+my-icons-collection.zip
 pythot/resources_rc.py
 pythot/value_decimal.py
 pythot/value_fraction.py

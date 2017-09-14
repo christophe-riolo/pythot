@@ -6,13 +6,15 @@ OperationPrompt: modal window used to ask the operation being made.
 """
 
 import re
+from os.path import dirname
 from operator import add, sub, mul, truediv, inv, neg
 from fractions import Fraction as F
 from sympy import S
 
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QMainWindow, QDialog, QFileDialog
+from PyQt5.QtWidgets import QMainWindow, QDialog, QWidget, QFileDialog, QTextBrowser
 from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtHelp import QHelpEngine
 
 from .window import Ui_MainWindow
 from .operation import Ui_operation
@@ -113,6 +115,9 @@ class Pythot(QMainWindow, Ui_MainWindow):
             return
         self.equations.loadFromFile(*filename)
 
+    def showHelp(self):
+        HelpWindow().show()
+
 
 class About(QDialog, Ui_about):
     def __init__(self, parent):
@@ -193,6 +198,32 @@ class OperationPrompt(QDialog, Ui_operation):
     def toFraction(self):
         self.fraction_line.show()
         self.denominator.show()
+
+
+class HelpBrowser(QTextBrowser):
+    def __init__(self, help_engine):
+        super().__init__()
+        self.help_engine = help_engine
+
+    def loadResource(self, type_, name):
+        if name.scheme() == "qthelp":
+            return self.help_engine.fileData(name)
+        else:
+            return super().loadResource(type_, name)
+
+
+from .help import Ui_HelpWindow
+
+
+class HelpWindow(QWidget, Ui_HelpWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.help_engine = QHelpEngine(dirname(__file__)  + "/doc/doc.qhc")
+        self.help_engine.setupData()
+        self.helpBrowser = HelpBrowser(self.help_engine)
+        self.contents = self.help_engine.contentWidget()
+        self.index = self.help_engine.indexWidget()
 
 from . import resources_rc
 

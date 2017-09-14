@@ -1,28 +1,32 @@
 <RCC>
   <qresource prefix="/icons">
-    <file>icons/book.svg</file>
-    <file>icons/cancel.svg</file>
-    <file>icons/D.svg</file>
-    <file>icons/div.svg</file>
-    <file>icons/document-empty.svg</file>
-    <file>icons/document-random.svg</file>
-    <file>icons/eraser.svg</file>
-    <file>icons/exchange.svg</file>
-    <file>icons/floppy-disk.svg</file>
-    <file>icons/folder.svg</file>
-    <file>icons/minus-x.svg</file>
-    <file>icons/minus.svg</file>
-    <file>icons/opposite.svg</file>
-    <file>icons/plus-x.svg</file>
-    <file>icons/plus.svg</file>
-    <file>icons/Q.svg</file>
-    <file>icons/thot.ico</file>
-    <file>icons/times.svg</file>
-    <file>icons/zoom-in.svg</file>
-    <file>icons/zoom-out.svg</file>
+    <file alias="book.svg">icons/book.svg</file>
+    <file alias="cancel.svg">icons/cancel.svg</file>
+    <file alias="D.svg">icons/D.svg</file>
+    <file alias="div.svg">icons/div.svg</file>
+    <file alias="new.svg">icons/document-empty.svg</file>
+    <file alias="random.svg">icons/document-random.svg</file>
+    <file alias="clear.svg">icons/eraser.svg</file>
+    <file alias="exchange.svg">icons/exchange.svg</file>
+    <file alias="save.svg">icons/floppy-disk.svg</file>
+    <file alias="open.svg">icons/folder.svg</file>
+    <file alias="minus-x.svg">icons/minus-x.svg</file>
+    <file alias="minus.svg">icons/minus.svg</file>
+    <file alias="opposite.svg">icons/opposite.svg</file>
+    <file alias="plus-x.svg">icons/plus-x.svg</file>
+    <file alias="plus.svg">icons/plus.svg</file>
+    <file alias="Q.svg">icons/Q.svg</file>
+    <file alias="thot.ico">icons/thot.ico</file>
+    <file alias="times.svg">icons/times.svg</file>
+    <file alias="zoom-in.svg">icons/zoom-in.svg</file>
+    <file alias="zoom-out.svg">icons/zoom-out.svg</file>
   </qresource>
   <qresource prefix="/fonts">
-    <file>fonts/lmroman10-regular.otf</file>
-    <file>fonts/lmroman10-bolditalic.otf</file>
+    <file alias="lmregular.otf">fonts/lmroman10-regular.otf</file>
+    <file alias="lmmath.otf">fonts/lmroman10-bolditalic.otf</file>
+  </qresource>
+  <qresource prefix="doc">
+    <file alias="doc.qhc">pythot/doc/doc.qhc</file>
+    <file alias="doc.qch">pythot/doc/doc.qch</file>
   </qresource>
 </RCC>
