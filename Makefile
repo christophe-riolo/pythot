@@ -1,9 +1,8 @@
-
-VERSION = 0.7.1
-DATE = 12/09/2017
+VERSION = 0.9
+DATE = 14/09/2017
 RESOURCE_FILE = resources.qrc
 RESOURCE = pythot/resources_rc.py
-UI_FILES = window.ui operation.ui about.ui help.ui
+UI_FILES = window.ui operation.ui about.ui help.ui new_eq.ui
 UI = $(UI_FILES:%.ui=pythot/%.py)
 README = README.rst
 HELP_FILES = pythot/doc/doc.qch pythot/doc/doc.qhc
@@ -24,9 +23,15 @@ help: $(HELP_FILES)
 
 # version updating -------------------------------
 version:
-	sed -E -i "s/Pythot v[[:digit:]]+(.[[:digit:]]+)*/Pythot v$(VERSION)/" about.ui
-	sed -E -i "s#[[:digit:]]{2}/[[:digit:]]{2}/[[:digit:]]{4}#$(DATE)#" about.ui
-	sed -E -i "s/version [[:digit:]]+(.[[:digit:]]+)*/version $(VERSION)/" README.rst
+	if test "$$(sed -n '/Pythot v$(VERSION)/p;' about.ui)";\
+	    then sed -E -i 's/Pythot v[[:digit:]]+(.[[:digit:]]+)*/Pythot v$(VERSION)/' about.ui;\
+	fi
+	if test "$$(sed -n '\#$(DATE)#p;' about.ui)";\
+	    then sed -E -i 's#[[:digit:]]{2}/[[:digit:]]{2}/[[:digit:]]{4}#$(DATE)#' about.ui;\
+	fi
+	if test "$$(sed -n '/Version $(VERSION)/p;' about.ui)";\
+	    then sed -E -i 's/version [[:digit:]]+(.[[:digit:]]+)*/version $(VERSION)/' README.rst;\
+	fi
 
 # UI compiling -----------------------------------
 pythot/%.py: %.ui

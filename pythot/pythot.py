@@ -10,19 +10,21 @@ from os.path import dirname
 from operator import add, sub, mul, truediv, inv, neg
 from fractions import Fraction as F
 from sympy import S
+from sympy.abc import x
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMainWindow, QDialog, QWidget, QFileDialog, QTextBrowser
 from PyQt5.QtCore import pyqtSignal, QUrl
 from PyQt5.QtHelp import QHelpEngine
 
+from .equations import Operation, Equation, Equations
 from .window import Ui_MainWindow
 from .operation import Ui_operation
-from .equations import Operation
 from .about import Ui_about
+from .new_eq import Ui_new_eq
 
 
-def str_to_fraction(numerator, denominator="1"):
+def str_to_fraction(numerator, denominator=None, mode="decimal"):
     """Simple function to make a fraction out of two strings.
 
     >>> str_to_fraction("3,2")
@@ -32,6 +34,13 @@ def str_to_fraction(numerator, denominator="1"):
     >>> type(str_to_fraction("3", "4"))
     <class 'sympy.core.numbers.Rational'>
     """
+
+    numerator = numerator if numerator else "0"
+    denominator = (
+        denominator
+        if denominator and mode == "fraction"
+        else "1"
+        )
 
     # Decimals may be written with a comma instead of dot (French style).
     numerator = numerator.replace(",", ".")
@@ -43,7 +52,6 @@ def str_to_fraction(numerator, denominator="1"):
         return S(F(F(numerator), F(denominator)))
     else:
         return None
-
 
 class Pythot(QMainWindow, Ui_MainWindow):
     """Main application window. Specializes QMainWindow.
@@ -91,6 +99,13 @@ class Pythot(QMainWindow, Ui_MainWindow):
         self.actionMode_d_cimal.triggered.connect(prompt.toDecimal)
         prompt.exec()
 
+    def equationPrompt(self):
+        """Starts the prompt to get the current operation."""
+        prompt = EquationPrompt(self)
+        self.actionMode_fraction.triggered.connect(prompt.toFraction)
+        self.actionMode_d_cimal.triggered.connect(prompt.toDecimal)
+        prompt.exec()
+
     def aboutWindow(self):
         about = About(self)
         about.show()
@@ -117,7 +132,6 @@ class Pythot(QMainWindow, Ui_MainWindow):
 
     def showHelp(self):
         self.h = HelpWindow()
-        print("Ok")
         self.h.show()
 
 
@@ -177,18 +191,12 @@ class OperationPrompt(QDialog, Ui_operation):
         """Sending signal make_operation before accepting."""
         numerator = self.numerator.text()
         denominator = self.denominator.text()
-
-        numerator = numerator if numerator else "0"
-        denominator = (
-                denominator
-                if denominator and self.parent().mode == "fraction"
-                else "1"
-                )
+        mode = self.parent().mode
 
         self.make_operation.emit(
             Operation(
                 operator=self.operator,
-                operand=str_to_fraction(numerator, denominator) * self._x
+                operand=str_to_fraction(numerator, denominator, mode) * self._x
             )
         )
         super().accept()
@@ -200,6 +208,58 @@ class OperationPrompt(QDialog, Ui_operation):
     def toFraction(self):
         self.fraction_line.show()
         self.denominator.show()
+
+
+class EquationPrompt(QDialog, Ui_new_eq):
+    """Stores the operation asked in this dialog, to send it as a signal."""
+
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.setupUi(self)
+
+        # I am not going to allow any other mode.
+        mode = self.parent().mode
+        if mode == "fraction":
+            self.toFraction()
+        else:
+            self.toDecimal()
+
+    def accept(self):
+        """Sending signal make_operation before accepting."""
+        parent = self.parent()
+        mode = parent.mode
+        lx = str_to_fraction(self.lxnum.text(), self.lxdenom.text(), mode)
+        l = str_to_fraction(self.lnum.text(), self.ldenom.text(), mode)
+        lx = str_to_fraction(self.lxnum.text(), self.lxdenom.text(), mode)
+        r = str_to_fraction(self.rnum.text(), self.rdenom.text(), mode)
+        rx = str_to_fraction(self.rxnum.text(), self.rxdenom.text(), mode)
+
+        eq = Equation()
+        eq.left = lx*x + l
+        eq.right = rx*x + r
+
+        parent.equations.newEquation(eq)
+        super().accept()
+
+    def toDecimal(self):
+        self.lxline.hide()
+        self.lxdenom.hide()
+        self.lline.hide()
+        self.ldenom.hide()
+        self.rxline.hide()
+        self.rxdenom.hide()
+        self.rline.hide()
+        self.rdenom.hide()
+
+    def toFraction(self):
+        self.lxline.show()
+        self.lxdenom.show()
+        self.lline.show()
+        self.ldenom.show()
+        self.rxline.show()
+        self.rxdenom.show()
+        self.rline.show()
+        self.rdenom.show()
 
 
 class HelpBrowser(QTextBrowser):

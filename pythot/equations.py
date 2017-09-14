@@ -11,6 +11,27 @@ from sympy.sets.sets import FiniteSet, EmptySet
 from sympy.sets.fancysets import Complexes
 
 
+def decimalizable(fraction):
+    """Utility function that says if a sympy fraction
+    can be made into a decimal fraction.
+
+    >>> decimalizable(S("3 ,4"))
+    True
+    >>> decimalizable(S("2, 3"))
+    False
+    """
+    _, d = fraction.as_numer_denom()
+    pow2 = 1
+    pow5 = 1
+    while not d % pow2:
+        pow2 *= 2
+    while not d % pow5:
+        pow5 *= 5
+    pow2 /= 2
+    pow5 /= 5
+    return d == pow2 * pow5
+
+
 def pretty_print(o, sign=True):
     """Utility function that formats a singleton expression.
 
@@ -63,9 +84,9 @@ class Equation:
         pieces += expr_to_cells(self.left)
         pieces += "<td> = </td>"
         pieces += expr_to_cells(self.right)
-        pieces += '<td><img src=":/icons/thot.ico" alt="' + self.nSolutions() + '"/></td>'\
+        pieces += '<td><img src=":/icons/thot.ico" /></td></tr><tr><td colspan="6">' + self.nSolutions() + '</td>' \
                   if self.isSolved()\
-                  else "<td />"
+                  else ""
         pieces += "</tr>\n"
         return "".join(pieces)
 
@@ -168,7 +189,7 @@ class Equation:
             return "L'équation n'a pas de solution."
         if isinstance(solutionset, FiniteSet):
             return "L'équation a une unique solution : "\
-                   + list(solutionset)[0] + "."
+                   + str(list(solutionset)[0]) + "."
         if isinstance(solutionset, Complexes):
             return "L'équation a une infinité de solutions."
 
@@ -291,8 +312,8 @@ class Operation:
 class Equations(QLabel):
     """List of all steps made so far to solve the equation.
     """
-    def __init__(self, parent=None):
-        self.data = [Equation()]
+    def __init__(self, parent=None, equation=Equation()):
+        self.data = [equation]
         QLabel.__init__(self, self.makeHTML(), parent)
 
     def __repr__(self):
@@ -303,6 +324,10 @@ class Equations(QLabel):
 
     def randomEquation(self):
         self.data = [Equation(random=True)]
+        self.setText(self.makeHTML())
+
+    def newEquation(self, eq):
+        self.data = [eq]
         self.setText(self.makeHTML())
 
     def update(self, operation=Operation(operator=add, operand=S(0))):

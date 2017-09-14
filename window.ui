@@ -1359,6 +1359,12 @@
    </hints>
   </connection>
   <connection>
+   <sender>actionNouvelle_quation</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>equationPrompt()</slot>
+  </connection>
+  <connection>
    <sender>actionAjouter_un_terme_en_x</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
@@ -1551,6 +1557,18 @@
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>savePrompt()</slot>
+  </connection>
+  <connection>
+   <sender>actionMode_fraction</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>toFraction()</slot>
+  </connection>
+  <connection>
+   <sender>actionMode_d_cimal</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>toDecimal()</slot>
   </connection>
  </connections>
 </ui>
