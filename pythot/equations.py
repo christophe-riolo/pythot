@@ -1,5 +1,5 @@
 import re
-from random import randint
+from random import randint, choice
 from operator import add, sub, neg, inv, mul, truediv
 
 from PyQt5.QtWidgets import QLabel
@@ -48,8 +48,10 @@ class Equation:
         """
 
         if random:
-            self.left = randint(1, 9) * x + randint(1, 9)
-            self.right = randint(1, 9) * x + randint(1, 9)
+            self.left  = choice((1, -1))*randint(1, 9) * x\
+                       + choice((1, -1))*randint(0, 9)
+            self.right = choice((1, -1))*randint(1, 9) * x\
+                       + choice((1, -1))*randint(0, 9)
         elif s == "":
             self.left = S("0")
             self.right = S("0")
