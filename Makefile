@@ -1,3 +1,4 @@
+
 VERSION = 0.7.1
 DATE = 12/09/2017
 RESOURCE_FILE = resources.qrc
@@ -13,7 +14,7 @@ test:
 run: all
 	python -m pythot
 
-all: version ui resources pythot/doc
+all: version ui resources help
 
 ui: $(UI)
 

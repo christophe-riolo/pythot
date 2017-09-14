@@ -13,7 +13,7 @@ from sympy import S
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMainWindow, QDialog, QWidget, QFileDialog, QTextBrowser
-from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtCore import pyqtSignal, QUrl
 from PyQt5.QtHelp import QHelpEngine
 
 from .window import Ui_MainWindow
@@ -116,7 +116,9 @@ class Pythot(QMainWindow, Ui_MainWindow):
         self.equations.loadFromFile(*filename)
 
     def showHelp(self):
-        HelpWindow().show()
+        self.h = HelpWindow()
+        print("Ok")
+        self.h.show()
 
 
 class About(QDialog, Ui_about):
@@ -201,9 +203,11 @@ class OperationPrompt(QDialog, Ui_operation):
 
 
 class HelpBrowser(QTextBrowser):
-    def __init__(self, help_engine):
-        super().__init__()
-        self.help_engine = help_engine
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.help_engine = QHelpEngine(dirname(__file__) + "/doc/doc.qhc")
+        self.help_engine.setupData()
+        self.setSource(QUrl("qthelp://math.pythot/doc/README.html"))
 
     def loadResource(self, type_, name):
         if name.scheme() == "qthelp":
@@ -219,11 +223,18 @@ class HelpWindow(QWidget, Ui_HelpWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.help_engine = QHelpEngine(dirname(__file__)  + "/doc/doc.qhc")
-        self.help_engine.setupData()
-        self.helpBrowser = HelpBrowser(self.help_engine)
-        self.contents = self.help_engine.contentWidget()
-        self.index = self.help_engine.indexWidget()
+        self.contents = self.helpBrowser.help_engine.contentWidget()
+        self.contents.setObjectName("contents")
+        self.index = self.helpBrowser.help_engine.indexWidget()
+        self.index.setObjectName("index")
+        self.navigation.addTab(self.contents, "Contents")
+        self.navigation.addTab(self.index, "Index")
+        self.navigation.removeTab(1)
+        self.navigation.removeTab(0)
+
+        # Connecting the signals
+        self.contents.linkActivated.connect(self.helpBrowser.setSource)
+        self.index.linkActivated.connect(self.helpBrowser.setSource)
 
 from . import resources_rc
 
