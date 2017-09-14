@@ -42,15 +42,15 @@ $(RESOURCE): $(RESOURCE_FILE)
 	pyrcc5  -o $(RESOURCE) $(RESOURCE_FILE)
 
 # Help files compiling ---------------------------
-pythot/doc/doc.qhc: pythot/doc/project.qhcp pythot/doc/doc.qch
+pythot/doc/doc.qhc: pythot/doc/doc.qhcp pythot/doc/doc.qch
 	qcollectiongenerator -o $@ $<
 
-pythot/doc/doc.qch: pythot/doc/project.qhp
+pythot/doc/doc.qch: pythot/doc/doc.qhp
 	qhelpgenerator -o $@ $<
 
-pythot/doc/project.qhcp pythot/doc/project.qhp: $(README)
+pythot/doc/doc.qhcp pythot/doc/doc.qhp: $(README)
 	mkdir -p pythot/doc
-	python2 rst2qhc.py $< -o pythot/doc \
+	python rst2qhc.py $< -o pythot/doc \
 	    --namespace math.pythot \
 	    --customfilter "Pythot $(VERSION)"\
 	    --create-qhcp\

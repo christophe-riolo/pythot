@@ -132,8 +132,8 @@ def main():
     
     infiles=args
     
-    print "Creating Help File from: %s"%', '.join(infiles)
-    print "Saving to: %s"%outdir
+    print("Creating Help File from: %s"%', '.join(infiles))
+    print("Saving to: %s"%outdir)
 
 
     attributes={
@@ -178,13 +178,13 @@ def main():
                 )
         attributes['files']+='\n            <file>%s</file>'%outfile
         
-    codecs.open(os.path.join(outdir,'project.qhp'),'w','utf-8').write(HelpProject % attributes)
-    os.system("qhelpgenerator %s -o %s"%(os.path.join(outdir,'project.qhp'),os.path.join(outdir,'doc.qhc')))
-    print "Created: ",os.path.join(outdir,'help.qhc')
+    codecs.open(os.path.join(outdir,'doc.qhp'),'w','utf-8').write(HelpProject % attributes)
+    os.system("qhelpgenerator %s -o %s"%(os.path.join(outdir,'doc.qhp'),os.path.join(outdir,'doc.qhc')))
+    print("Created: ",os.path.join(outdir,'help.qhc'))
     
     if options.createqhcp:
-        codecs.open(os.path.join(outdir,'project.qhcp'),'w','utf-8').write(HelpCollection % attributes)
-        print "Created: ",os.path.join(outdir,'project.qhcp')
+        codecs.open(os.path.join(outdir,'doc.qhcp'),'w','utf-8').write(HelpCollection % attributes)
+        print("Created: ",os.path.join(outdir,'doc.qhcp'))
    
 if __name__=='__main__':
     main()
