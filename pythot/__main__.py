@@ -9,8 +9,8 @@ from .import pythot
 
 app = QApplication(sys.argv)
 
-QFontDatabase.addApplicationFont(":/fonts/lmroman10-bolditalic.otf")
-QFontDatabase.addApplicationFont(":/fonts/lmroman10-regular.otf")
+QFontDatabase.addApplicationFont(":/fonts/lmmath.otf")
+QFontDatabase.addApplicationFont(":/fonts/lmregular.otf")
 
 main_window = pythot.Pythot()
 main_window.show()
