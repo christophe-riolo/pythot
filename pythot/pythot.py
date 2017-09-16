@@ -17,7 +17,7 @@ from PyQt5.QtWidgets import QMainWindow, QDialog, QWidget, QFileDialog, QTextBro
 from PyQt5.QtCore import pyqtSignal, QUrl
 from PyQt5.QtHelp import QHelpEngine
 
-from .equations import Operation, Equation, Equations
+from .equations import Operation, Equation
 from .window import Ui_MainWindow
 from .operation import Ui_operation
 from .about import Ui_about
@@ -52,6 +52,7 @@ def str_to_fraction(numerator, denominator=None, mode="decimal"):
         return S(F(F(numerator), F(denominator)))
     else:
         return None
+
 
 class Pythot(QMainWindow, Ui_MainWindow):
     """Main application window. Specializes QMainWindow.
@@ -295,6 +296,7 @@ class HelpWindow(QWidget, Ui_HelpWindow):
         # Connecting the signals
         self.contents.linkActivated.connect(self.helpBrowser.setSource)
         self.index.linkActivated.connect(self.helpBrowser.setSource)
+
 
 from . import resources_rc
 
