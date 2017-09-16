@@ -18,7 +18,7 @@
   </property>
   <property name="font">
    <font>
-    <family>LM Roman 9</family>
+    <family>Latin Modern Roman</family>
     <pointsize>16</pointsize>
    </font>
   </property>

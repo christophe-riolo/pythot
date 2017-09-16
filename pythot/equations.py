@@ -3,6 +3,7 @@ from random import randint, choice
 from operator import add, sub, neg, inv, mul, truediv
 
 from PyQt5.QtWidgets import QLabel
+from PyQt5 import QtGui
 
 from sympy import S, pretty, solveset
 from sympy.abc import x
@@ -365,6 +366,7 @@ class Equations(QLabel):
                 text-align: center;
                 vertical-align: middle;
                 padding: 0px 1em 0px 1em;
+                font: italic 18px "Latin Modern Roman";
             }
 
             .operation > td {
