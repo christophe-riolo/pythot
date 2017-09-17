@@ -1,14 +1,26 @@
 from setuptools import setup, find_packages
-import pip
 
+# Checking install of PyQt5
+pyqt5_failed = False
 try:
     import PyQt5
 except ModuleNotFoundError:
-    pip.main(['install', 'PyQt5'])
+    import pip
+    pyqt5_failed = pip.main(['install', 'PyQt5'])
 
+# Fiw for bdist_wininst codec fail
+import codecs
+try:
+    codecs.lookup("mbcs")
+except LookupError:
+    ascii = codecs.lookup("ascii")
+    func = lambda name, enc=ascii: {True: enc}.get(name=="mbcs")
+    codecs.register(func)
+
+# Actual setup.
 setup(
         name="Pythot",
-        version="0.9",
+        version="0.9.1",
         license="GPLv3",
         keywords="math mathematics education linear equation equations",
         classifiers=[
@@ -33,5 +45,8 @@ setup(
         },
         author="Christophe Riolo",
         author_email="riolo.christophe@gmail.com",
-        description="Software for learning first degree linear equation with visual resolution."
+        description="Software for learning first degree linear equation with visual solving."
 )
+
+if pyqt5_failed:
+    print("\nAutomated install of PyQt5 has failed. Try to install it manually.\n")

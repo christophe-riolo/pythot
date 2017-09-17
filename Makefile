@@ -1,4 +1,4 @@
-VERSION = 0.9
+VERSION = 0.9.1
 DATE = 14/09/2017
 RESOURCE_FILE = resources.qrc
 RESOURCE = pythot/resources_rc.py
@@ -23,14 +23,17 @@ help: $(HELP_FILES)
 
 # version updating -------------------------------
 version:
-	if test "$$(sed -n '/Pythot v$(VERSION)/p;' about.ui)";\
+	if test -z "$$(sed -n '/Pythot v$(VERSION)/p;' about.ui)";\
 	    then sed -E -i 's/Pythot v[[:digit:]]+(.[[:digit:]]+)*/Pythot v$(VERSION)/' about.ui;\
 	fi
-	if test "$$(sed -n '\#$(DATE)#p;' about.ui)";\
+	if test -z "$$(sed -n '\#$(DATE)#p;' about.ui)";\
 	    then sed -E -i 's#[[:digit:]]{2}/[[:digit:]]{2}/[[:digit:]]{4}#$(DATE)#' about.ui;\
 	fi
-	if test "$$(sed -n '/Version $(VERSION)/p;' about.ui)";\
+	if test -z "$$(sed -n '/version $(VERSION)/p;' README.rst)";\
 	    then sed -E -i 's/version [[:digit:]]+(.[[:digit:]]+)*/version $(VERSION)/' README.rst;\
+	fi
+	if test -z "$$(sed -n '/version=\"$(VERSION)\"/p;' setup.py)";\
+	    then sed -E -i 's/version=\"[[:digit:]]+(.[[:digit:]]+)*\"/version=\"$(VERSION)\"/' setup.py;\
 	fi
 
 # UI compiling -----------------------------------
