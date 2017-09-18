@@ -315,6 +315,7 @@ class Equations(QLabel):
     """
     def __init__(self, parent=None, equation=Equation()):
         self.data = [equation]
+        self.font_size = 18
         QLabel.__init__(self, self.makeHTML(), parent)
 
     def __repr__(self):
@@ -366,7 +367,7 @@ class Equations(QLabel):
                 text-align: center;
                 vertical-align: middle;
                 padding: 0px 1em 0px 1em;
-                font: italic 18px "Latin Modern Roman";
+                font: italic """ + str(self.font_size) + """px "Latin Modern Roman";
             }
 
             .operation > td {
@@ -374,7 +375,7 @@ class Equations(QLabel):
             }
             </style>
             </head>
-            <body style=" font-family:'LM Roman 9'; font-size:16pt; font-weight:400; font-style:italic; text-align:center">
+            <body style="text-align:center">
             <table>
             """
             + "".join(map(str, self.data))
@@ -382,6 +383,14 @@ class Equations(QLabel):
             </body>
             </html>
             """)
+
+    def zoom_in(self):
+        self.font_size += 2
+        self.setText(self.makeHTML())
+
+    def zoom_out(self):
+        self.font_size -= 2
+        self.setText(self.makeHTML())
 
     def clear_equation(self):
         """Resets the equation to the basic 0=0 equation."""

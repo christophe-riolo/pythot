@@ -14,8 +14,8 @@
    <string>Pythot</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icons/thot.ico</normaloff>icons/thot.ico</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/thot.ico</normaloff>:/icons/thot.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -1363,6 +1363,16 @@
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>equationPrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>actionAjouter_un_terme_en_x</sender>
@@ -1545,30 +1555,92 @@
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>showHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>actionOuvrir_un_fichier_quations</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>openPrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>actionSauvegarder_un_fichier_quation</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>savePrompt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>actionMode_fraction</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>toFraction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
   </connection>
   <connection>
    <sender>actionMode_d_cimal</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>toDecimal()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgrandir</sender>
+   <signal>triggered()</signal>
+   <receiver>equations</receiver>
+   <slot>zoom_in()</slot>
+  </connection>
+  <connection>
+   <sender>actionR_duire</sender>
+   <signal>triggered()</signal>
+   <receiver>equations</receiver>
+   <slot>zoom_out()</slot>
   </connection>
  </connections>
 </ui>

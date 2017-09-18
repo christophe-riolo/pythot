@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_new_eq(object):
     def setupUi(self, new_eq):
         new_eq.setObjectName("new_eq")
-        new_eq.resize(368, 175)
+        new_eq.resize(383, 175)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -21,6 +21,9 @@ class Ui_new_eq(object):
         font.setFamily("Latin Modern Roman")
         font.setPointSize(16)
         new_eq.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/thot.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        new_eq.setWindowIcon(icon)
         self.verticalLayout = QtWidgets.QVBoxLayout(new_eq)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(new_eq)

@@ -1,5 +1,5 @@
-VERSION = 0.9.1
-DATE = 14/09/2017
+VERSION = 1.0.0b
+DATE = 17/09/2017
 RESOURCE_FILE = resources.qrc
 RESOURCE = pythot/resources_rc.py
 UI_FILES = window.ui operation.ui about.ui help.ui new_eq.ui

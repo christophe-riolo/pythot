@@ -8,19 +8,10 @@ except ModuleNotFoundError:
     import pip
     pyqt5_failed = pip.main(['install', 'PyQt5'])
 
-# Fiw for bdist_wininst codec fail
-import codecs
-try:
-    codecs.lookup("mbcs")
-except LookupError:
-    ascii = codecs.lookup("ascii")
-    func = lambda name, enc=ascii: {True: enc}.get(name=="mbcs")
-    codecs.register(func)
-
 # Actual setup.
 setup(
         name="Pythot",
-        version="0.9.1",
+        version="1.0b",
         license="GPLv3",
         keywords="math mathematics education linear equation equations",
         classifiers=[
@@ -36,12 +27,13 @@ setup(
             "Topic :: Scientific/Engineering :: Mathematics"
             ],
         packages=find_packages(),
+        scripts=['bin/pythot'],
 
         setup_requires=["pip"],
         install_requires=['sympy>=1.1'],
 
         package_data={
-            '': ['*.qhc', '*.qch']
+            'pythot': ['doc/*.qhc', 'doc/*.qch']
         },
         author="Christophe Riolo",
         author_email="riolo.christophe@gmail.com",

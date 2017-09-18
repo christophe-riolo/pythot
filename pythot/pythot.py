@@ -298,6 +298,25 @@ class HelpWindow(QWidget, Ui_HelpWindow):
         self.index.linkActivated.connect(self.helpBrowser.setSource)
 
 
+def main():
+    import sys
+
+    from PyQt5.QtGui import QFontDatabase
+    from PyQt5.QtWidgets import QApplication
+
+    app = QApplication(sys.argv)
+
+    QFontDatabase.addApplicationFont(":/fonts/lmmath.otf")
+    QFontDatabase.addApplicationFont(":/fonts/lmregular.otf")
+
+    main_window = Pythot()
+    main_window.show()
+
+    # Dirty hack to finally display the first equation.
+    main_window.actionAnnuler.trigger()
+    sys.exit(app.exec_())
+
+
 from . import resources_rc
 
 # vim: fdm=indent

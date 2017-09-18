@@ -13,7 +13,7 @@ class Ui_HelpWindow(object):
         HelpWindow.setObjectName("HelpWindow")
         HelpWindow.resize(975, 612)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/icons/book.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/book.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         HelpWindow.setWindowIcon(icon)
         self.horizontalLayout = QtWidgets.QHBoxLayout(HelpWindow)
         self.horizontalLayout.setObjectName("horizontalLayout")

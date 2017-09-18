@@ -14,8 +14,8 @@
    <string>Manuel</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/icons/icons/book.svg</normaloff>:/icons/icons/book.svg</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/book.svg</normaloff>:/icons/book.svg</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
