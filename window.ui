@@ -1642,5 +1642,17 @@
    <receiver>equations</receiver>
    <slot>zoom_out()</slot>
   </connection>
+  <connection>
+   <sender>actionMode_d_cimal</sender>
+   <signal>triggered()</signal>
+   <receiver>equations</receiver>
+   <slot>to_decimal()</slot>
+  </connection>
+  <connection>
+   <sender>actionMode_fraction</sender>
+   <signal>triggered()</signal>
+   <receiver>equations</receiver>
+   <slot>to_fraction()</slot>
+  </connection>
  </connections>
 </ui>

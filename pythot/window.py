@@ -464,6 +464,8 @@ class Ui_MainWindow(object):
         self.actionMode_d_cimal.triggered.connect(MainWindow.toDecimal)
         self.actionAgrandir.triggered.connect(self.equations.zoom_in)
         self.actionR_duire.triggered.connect(self.equations.zoom_out)
+        self.actionMode_d_cimal.triggered.connect(self.equations.to_decimal)
+        self.actionMode_fraction.triggered.connect(self.equations.to_fraction)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.add_num, self.sub_num)
         MainWindow.setTabOrder(self.sub_num, self.add_x)

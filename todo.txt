@@ -1,8 +1,8 @@
 x 2017-09-14 2017-09-09 Make help
 x 2017-09-14 2017-09-09 Make new equation prompt
 (B) 2017-09-14 Do not display multiplication and divisions on empty terms. +operation.__str__ @equations.py
-(B) 2017-09-08 Make fractions better in Equations.
-(B) 2017-09-09 Make a difference between fraction and decimal mode in display. +decimalizable +pretty_print @equations.py
+x 2017-09-18 2017-09-08 Make fractions better in Equations.
+x 2017-09-18 2017-09-09 Make a difference between fraction and decimal mode in display. +decimalizable +pretty_print @equations.py
 (C) 2017-09-05 Implement tests for Equations
 (C) 2017-09-05 Implement tests for Operation
 (C) 2017-09-05 Implement tests for OperationPrompt

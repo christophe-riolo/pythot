@@ -72,7 +72,7 @@ class Pythot(QMainWindow, Ui_MainWindow):
         super().__init__(*args, **kwargs)
 
         self.setupUi(self)
-        self.toDecimal()
+        self.actionMode_d_cimal.trigger()
 
     def onActionNeg(self):
         """Instanctiates an Operation on a request of negating the equation.

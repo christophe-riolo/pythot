@@ -3,11 +3,10 @@ from random import randint, choice
 from operator import add, sub, neg, inv, mul, truediv
 
 from PyQt5.QtWidgets import QLabel
-from PyQt5 import QtGui
 
 from sympy import S, pretty, solveset
 from sympy.abc import x
-from sympy.core.expr import Expr
+from sympy.core.expr import Expr, Rational, Integer
 from sympy.sets.sets import FiniteSet, EmptySet
 from sympy.sets.fancysets import Complexes
 
@@ -33,31 +32,108 @@ def decimalizable(fraction):
     return d == pow2 * pow5
 
 
-def pretty_print(o, sign=True):
+def pretty_print(o, sign=True, mode="decimal"):
     """Utility function that formats a singleton expression.
 
     o: expression to format.
     sign: whether the + sign should appear (true by default)
+    mode: "decimal" or "fraction".
+          "decimal" tries to print decimal numbers as such.
     """
-    s = pretty(o)
-    s = s.replace("\n", "<br />")
-    if sign and o.as_coeff_mul(x)[0] >= 0:
-        s = "+" + s
-    return s
+    coeff_sign = 1 if o.as_coeff_mul(x)[0] >= 0 else -1
+    coeffs = o.as_coefficients_dict()
+
+    def fraction(frac, x_=False):
+        """Makes a nice looking fraction."""
+        # If we have an Integer, decimal() knows how to do it.
+        if isinstance(frac, Integer):
+            return decimal(frac, x_)
+
+        # Forcing the nice fraction display.
+        frac = pretty(coeff_sign*frac*x).replace("⋅x", "")
+        num, line, den = frac.split()
+
+        # We might have a fraction with just an x as numerator,
+        # to replace with a 1.
+        if num == "x":
+            num = "1"
+
+        # Adding the sign if needed.
+        # We add left padding to numerator and denominator
+        # to keep the centering on the line.
+        if sign and coeff_sign >= 0:
+            num = "&nbsp;&nbsp;" + num
+            den = "&nbsp;&nbsp;" + den
+            line = "+ " + line
+        elif coeff_sign < 0:
+            num = "&nbsp;&nbsp;" + num
+            den = "&nbsp;&nbsp;" + den
+            line = "- " + line
+
+        # Adding the " x" if needed.
+        # We add right padding to numerator and denominator
+        # to keep the centering on the line.
+        if x_:
+            num = num + "&nbsp;&nbsp;"
+            den = den + "&nbsp;&nbsp;"
+            line = line + " x"
+        return "<br />".join((num, line, den))
+
+    def decimal(frac, x_=False):
+        """Makes a nice looking decimal number if possible."""
+        if isinstance(frac, Rational) and decimalizable(frac):
+            # sympy's floats might have trailing zeroes
+            # which we want to remove.
+            s = str((coeff_sign * frac).evalf())
+
+            # Stripping trailing zeroes in decimal part.
+            # Stripping also unneeded decimal point
+            if '.' in s:
+                s = s.rstrip("0").rstrip(".")
+
+            # No need to write "1 x", just "x" is good.
+            if s == "1" and x_:
+                s = ""
+
+            # Adding the sign if needed.
+            if sign and coeff_sign >= 0:
+                s = "+ " + s
+            elif coeff_sign < 0:
+                s = "- " + s
+            if x_:
+                s = s + " x"
+            return s
+        else:
+            return fraction(frac, x_)
+
+    if mode == "decimal":
+        if coeffs[x]:
+            return decimal(coeffs[x], x_=True)
+        if coeffs[1]:
+            return decimal(coeffs[1])
+        if coeffs[0]:
+            return decimal(S("0"))
+    if mode == "fraction":
+        if coeffs[x]:
+            return fraction(coeffs[x], x_=True)
+        elif coeffs[1]:
+            return fraction(coeffs[1])
+        elif coeffs[0]:
+            return fraction(S("0"))
 
 
-def expr_to_cells(e, force_sign=False):
+def expr_to_cells(e, force_sign=False, mode="decimal"):
     """Format an expression into cells for the table in Equations."""
     e0, e1 = e.as_independent(x, as_Add=True)
     if e0 and e1:
         return (
-              "<td>" + pretty_print(e1, sign=force_sign or False) + "</td>"
-            + "<td>" + pretty_print(e0) + "</td>"
+              "<td>" + pretty_print(e1, sign=force_sign or False, mode=mode) + "</td>"
+            + "<td>" + pretty_print(e0, mode=mode) + "</td>"
             )
     elif e1:
-        return "<td>" + pretty_print(e1, sign=force_sign or False) + "</td><td/>"
+        return "<td>" + pretty_print(e1, sign=force_sign or False, mode=mode) + "</td><td/>"
     else:
-        return "<td/><td>" + pretty_print(e0, sign=force_sign or False) + "</td>"
+        return "<td/><td>" + pretty_print(e0, sign=force_sign or False, mode=mode) + "</td>"
 
 
 class Equation:
@@ -80,11 +156,11 @@ class Equation:
         else:
             self.left, self.right = map(S, s.split("="))
 
-    def __str__(self):
+    def to_string(self, mode="fraction"):
         pieces = ["<tr>"]
-        pieces += expr_to_cells(self.left)
+        pieces += expr_to_cells(self.left, mode=mode)
         pieces += "<td> = </td>"
-        pieces += expr_to_cells(self.right)
+        pieces += expr_to_cells(self.right, mode=mode)
         pieces += '<td><img src=":/icons/thot.ico" /></td></tr><tr><td colspan="6">' + self.nSolutions() + '</td>' \
                   if self.isSolved()\
                   else ""
@@ -240,30 +316,30 @@ class Operation:
         self.operator = operator
         self.operand = operand
 
-    def __str__(self):
+    def to_string(self, mode="fraction"):
         pieces = ['<tr class="operation">']
 
         if self.operator == add:
-            pieces += expr_to_cells(self.operand, force_sign=True)
+            pieces += expr_to_cells(self.operand, force_sign=True, mode=mode)
             pieces += "<td />"
-            pieces += expr_to_cells(self.operand, force_sign=True)
+            pieces += expr_to_cells(self.operand, force_sign=True, mode=mode)
         if self.operator == sub:
-            pieces += expr_to_cells(-self.operand, force_sign=True)
+            pieces += expr_to_cells(-self.operand, force_sign=True, mode=mode)
             pieces += "<td />"
-            pieces += expr_to_cells(-self.operand, force_sign=True)
+            pieces += expr_to_cells(-self.operand, force_sign=True, mode=mode)
 
         if self.operator == mul:
-            pieces += "<td>× " + pretty_print(self.operand, sign=False) + "</td>"
-            pieces += "<td>× " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+            pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
             pieces += "<td />"
-            pieces += "<td>× " + pretty_print(self.operand, sign=False) + "</td>"
-            pieces += "<td>× " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+            pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
         if self.operator == truediv:
-            pieces += "<td>÷ " + pretty_print(self.operand, sign=False) + "</td>"
-            pieces += "<td>÷ " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+            pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
             pieces += "<td />"
-            pieces += "<td>÷ " + pretty_print(self.operand, sign=False) + "</td>"
-            pieces += "<td>÷ " + pretty_print(self.operand, sign=False) + "</td>"
+            pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+            pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
 
         if self.operator == inv:
             pieces += '<td colspan="5">Inversion des membres.</td>'
@@ -316,7 +392,8 @@ class Equations(QLabel):
     def __init__(self, parent=None, equation=Equation()):
         self.data = [equation]
         self.font_size = 18
-        QLabel.__init__(self, self.makeHTML(), parent)
+        QLabel.__init__(self, "", parent)
+        self.mode = "decimal"
 
     def __repr__(self):
         ret = ["["]
@@ -326,11 +403,11 @@ class Equations(QLabel):
 
     def randomEquation(self):
         self.data = [Equation(random=True)]
-        self.setText(self.makeHTML())
+        self.setHTML()
 
     def newEquation(self, eq):
         self.data = [eq]
-        self.setText(self.makeHTML())
+        self.setHTML()
 
     def update(self, operation=Operation(operator=add, operand=S(0))):
         """Adds and apply an Operation to the list."""
@@ -338,6 +415,9 @@ class Equations(QLabel):
         last_step = self.data[-1]
         result = operation(last_step)
         self.data.extend([operation, result])
+        self.setHTML()
+
+    def setHTML(self):
         self.setText(self.makeHTML())
 
     def makeHTML(self):
@@ -346,28 +426,12 @@ class Equations(QLabel):
             <head>
             <meta name="qrichtext" content="1" />
             <style type="text/css">
-            .frac { display: inline-block;
-                position: relative;
-                vertical-align: middle;
-                letter-spacing: 0.001em;
-                text-align: center;
-            }
-            .frac > span {
-                display: block;
-                padding: 0.1em;
-            }
-            .frac span.bottom {
-                border-top: thin solid black;
-            }
-            .frac span.symbol {
-                display: none;
-            }
-
             td {
                 text-align: center;
                 vertical-align: middle;
                 padding: 0px 1em 0px 1em;
                 font: italic """ + str(self.font_size) + """px "Latin Modern Roman";
+                width: 20%;
             }
 
             .operation > td {
@@ -378,7 +442,7 @@ class Equations(QLabel):
             <body style="text-align:center">
             <table>
             """
-            + "".join(map(str, self.data))
+            + "".join(map(lambda dat: getattr(dat, "to_string")(self.mode), self.data))
             + """</table>
             </body>
             </html>
@@ -386,26 +450,26 @@ class Equations(QLabel):
 
     def zoom_in(self):
         self.font_size += 2
-        self.setText(self.makeHTML())
+        self.setHTML()
 
     def zoom_out(self):
         self.font_size -= 2
-        self.setText(self.makeHTML())
+        self.setHTML()
 
     def clear_equation(self):
         """Resets the equation to the basic 0=0 equation."""
         self.data = [Equation()]
-        self.setText(self.makeHTML())
+        self.setHTML()
 
     def cancel(self):
         """Cancels the last operation."""
         if len(self.data) >= 3:
             del self.data[-2:]
-        self.setText(self.makeHTML())
+        self.setHTML()
 
     def loadFromRepr(self, s):
         self.data = eval(s)
-        self.setText(self.makeHTML())
+        self.setHTML()
 
     def loadFromFile(self, fname, filter_):
         r = re.compile("\(\*(.p?tht)\)$")
@@ -422,8 +486,15 @@ class Equations(QLabel):
             with open(fname, 'w', encoding="utf-8") as f:
                 f.write(repr(self))
         else:
-            print(filter_)
             with open(fname + r.search(filter_)[1], 'w', encoding="utf-8") as f:
                 f.write(repr(self))
+
+    def to_decimal(self):
+        self.mode = "decimal"
+        self.setHTML()
+
+    def to_fraction(self):
+        self.mode = "fraction"
+        self.setHTML()
 
 # vim: fdm=indent
