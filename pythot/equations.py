@@ -536,7 +536,20 @@ class Equations(QLabel):
         self.setHTML()
 
     def loadFromRepr(self, s):
-        self.data = eval(s)
+        s = s.replace('\n', '').replace(' ', '')
+        # Equation or Operation, with parentheses, and between quotes,
+        # a mix of numbers, operators, spaces and parentheses, for the
+        # sympy expressions.
+        exp_op_r = r'''(?:(?:Equation|Operation)\(("|')[0-9\+\-\*\/=x\(\)]+\1\))'''
+        list_r = r'\[(?:' + exp_op_r + r',)+' + exp_op_r + r'\]'
+
+        # If it matches, then it should be safe to eval.
+        # The only unknown part is in the parentheses,
+        # and is handed over to sympy, that will check it.
+        if re.match(list_r, s):
+            self.data = eval(s)
+        else:
+            raise(ValueError("Error in Pythot file."))
         self.setHTML()
 
     def loadFromFile(self, fname, filter_):
