@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QLabel
 
 from sympy import S, pretty, solveset
 from sympy.abc import x
-from sympy.core.expr import Expr, Rational, Integer
+from sympy.core.expr import Expr, Rational, Integer, Add
 from sympy.sets.sets import FiniteSet, EmptySet
 from sympy.sets.fancysets import Complexes
 
@@ -77,7 +77,9 @@ def pretty_print(o, sign=True, mode="decimal"):
             num = num + "&nbsp;&nbsp;"
             den = den + "&nbsp;&nbsp;"
             line = line + " x"
-        return "<br />".join((num, line, den))
+        return '<span class="center">'\
+               + "<br />".join((num, line, den))\
+               + '</span>'
 
     def decimal(frac, x_=False):
         """Makes a nice looking decimal number if possible."""
@@ -131,9 +133,9 @@ def expr_to_cells(e, force_sign=False, mode="decimal"):
             + "<td>" + pretty_print(e0, mode=mode) + "</td>"
             )
     elif e1:
-        return "<td>" + pretty_print(e1, sign=force_sign or False, mode=mode) + "</td><td/>"
+        return '<td colspan="2">' + pretty_print(e1, sign=force_sign or False, mode=mode) + "</td>"
     else:
-        return "<td/><td>" + pretty_print(e0, sign=force_sign or False, mode=mode) + "</td>"
+        return '<td colspan="2">' + pretty_print(e0, sign=force_sign or False, mode=mode) + "</td>"
 
 
 class Equation:
@@ -161,7 +163,7 @@ class Equation:
         pieces += expr_to_cells(self.left, mode=mode)
         pieces += "<td> = </td>"
         pieces += expr_to_cells(self.right, mode=mode)
-        pieces += '<td><img src=":/icons/thot.ico" /></td></tr><tr><td colspan="6">' + self.nSolutions() + '</td>' \
+        pieces += '<td><img src=":/icons/thot.ico" /></td></tr><tr><td colspan="5">' + self.nSolutions(mode) + '</td>' \
                   if self.isSolved()\
                   else ""
         pieces += "</tr>\n"
@@ -260,15 +262,15 @@ class Equation:
              or r0 == 0 and r1 == x and self.left.is_number
              or self.left.is_number and self.right.is_number)
 
-    def nSolutions(self):
+    def nSolutions(self, mode):
         solutionset = solveset(self.left - self.right)
         if isinstance(solutionset, EmptySet):
-            return "L'équation n'a pas de solution."
+            return "L'équation n'a pas de solution.</td><td>"
         if isinstance(solutionset, FiniteSet):
-            return "L'équation a une unique solution : "\
-                   + str(list(solutionset)[0]) + "."
+            return "L'équation a une unique solution : </td><td>"\
+                   + pretty_print(list(solutionset)[0], sign=False, mode=mode)
         if isinstance(solutionset, Complexes):
-            return "L'équation a une infinité de solutions."
+            return "L'équation a une infinité de solutions.</td><td>"
 
 
 class Operation:
@@ -316,30 +318,87 @@ class Operation:
         self.operator = operator
         self.operand = operand
 
-    def to_string(self, mode="fraction"):
+    def to_string(self, mode="fraction", previous=None):
         pieces = ['<tr class="operation">']
 
-        if self.operator == add:
-            pieces += expr_to_cells(self.operand, force_sign=True, mode=mode)
-            pieces += "<td />"
-            pieces += expr_to_cells(self.operand, force_sign=True, mode=mode)
-        if self.operator == sub:
-            pieces += expr_to_cells(-self.operand, force_sign=True, mode=mode)
-            pieces += "<td />"
-            pieces += expr_to_cells(-self.operand, force_sign=True, mode=mode)
+        if self.operator in [add, sub, mul, truediv]:
+            if isinstance(previous.left, Add):
+                if self.operator == add:
+                    pieces += '<td>'
+                    pieces += pretty_print(self.operand, sign=True, mode=mode)\
+                              if not self.operand.is_constant()\
+                              else ""
+                    pieces += '</td><td>'
+                    pieces += pretty_print(self.operand, sign=True, mode=mode)\
+                              if self.operand.is_constant()\
+                              else ""
+                    pieces += '</td>'
+                if self.operator == sub:
+                    pieces += '<td>'
+                    pieces += pretty_print(-self.operand, sign=True, mode=mode)\
+                              if not self.operand.is_constant()\
+                              else ""
+                    pieces += '</td><td>'
+                    pieces += pretty_print(-self.operand, sign=True, mode=mode)\
+                              if self.operand.is_constant()\
+                              else ""
+                    pieces += '</td>'
 
-        if self.operator == mul:
-            pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
-            pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
-            pieces += "<td />"
-            pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
-            pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
-        if self.operator == truediv:
-            pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
-            pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
-            pieces += "<td />"
-            pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
-            pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == mul:
+                    pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                    pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == truediv:
+                    pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                    pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+            else:
+                if self.operator == add:
+                    pieces += '<td colspan="2">+ ' + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == sub:
+                    pieces += '<td colspan="2">- ' + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == mul:
+                    pieces += '<td colspan="2">× ' + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == truediv:
+                    pieces += '<td colspan="2">÷ ' + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+
+            pieces += '<td />'
+
+            if isinstance(previous.right, Add):
+                if self.operator == add:
+                    pieces += '<td>'
+                    pieces += pretty_print(self.operand, sign=True, mode=mode)\
+                              if not self.operand.is_constant()\
+                              else ""
+                    pieces += '</td><td>'
+                    pieces += pretty_print(self.operand, sign=True, mode=mode)\
+                              if self.operand.is_constant()\
+                              else ""
+                    pieces += '</td>'
+                if self.operator == sub:
+                    pieces += '<td>'
+                    pieces += pretty_print(-self.operand, sign=True, mode=mode)\
+                              if not self.operand.is_constant()\
+                              else ""
+                    pieces += '</td><td>'
+                    pieces += pretty_print(-self.operand, sign=True, mode=mode)\
+                              if self.operand.is_constant()\
+                              else ""
+                    pieces += '</td>'
+
+                if self.operator == mul:
+                    pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                    pieces += "<td>× " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == truediv:
+                    pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                    pieces += "<td>÷ " + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+            else:
+                if self.operator == add:
+                    pieces += '<td colspan="2">+ ' + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == sub:
+                    pieces += '<td colspan="2">- ' + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == mul:
+                    pieces += '<td colspan="2">× ' + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
+                if self.operator == truediv:
+                    pieces += '<td colspan="2">÷ ' + pretty_print(self.operand, sign=False, mode=mode) + "</td>"
 
         if self.operator == inv:
             pieces += '<td colspan="5">Inversion des membres.</td>'
@@ -429,7 +488,12 @@ class Equations(QLabel):
             td {
                 text-align: center;
                 vertical-align: middle;
-                padding: 0px 1em 0px 1em;
+                margin-left: 0px;
+                margin-right: 0px;
+                padding-top: 0px;
+                padding-right: 1ex;
+                padding-bottom: 0px;
+                padding-left: 0px;
                 font: italic """ + str(self.font_size) + """px "Latin Modern Roman";
                 width: 20%;
             }
@@ -442,7 +506,11 @@ class Equations(QLabel):
             <body style="text-align:center">
             <table>
             """
-            + "".join(map(lambda dat: getattr(dat, "to_string")(self.mode), self.data))
+            + "".join([self.data[i].to_string(self.mode,
+                                              previous=self.data[i-1])
+                       if i % 2 == 1  # Just for operations
+                       else self.data[i].to_string(self.mode)
+                       for i in range(len(self.data))])
             + """</table>
             </body>
             </html>

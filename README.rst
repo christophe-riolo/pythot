@@ -41,7 +41,7 @@ Les erreurs fréquentes sont les suivantes :
 Version du programme
 ====================
 
-La **version 1.0.1bbb** du programme **Pythot** est écrite en Python 3 et utilise PyQt.
+La **version 1.0.2** du programme **Pythot** est écrite en Python 3 et utilise PyQt.
 
 Elle est basée sur le logiciel Thot d'Emmanuel Morand : http://www.emmanuelmorand.net
 
