@@ -1,4 +1,4 @@
-VERSION = 1.0.3
+VERSION = 1.0.4
 DATE = 17/09/2017
 RESOURCE_FILE = resources.qrc
 RESOURCE = pythot/resources_rc.py

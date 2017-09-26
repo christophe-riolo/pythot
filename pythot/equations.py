@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+from io import open
+
 import re
 from random import randint, choice
 from operator import add, sub, neg, inv, mul, truediv
@@ -138,7 +142,7 @@ def expr_to_cells(e, force_sign=False, mode="decimal"):
         return '<td colspan="2">' + pretty_print(e0, sign=force_sign or False, mode=mode) + "</td>"
 
 
-class Equation:
+class Equation(object):
     """Inner representation of an equation.
     """
     def __init__(self, s="", random=False):
@@ -273,7 +277,7 @@ class Equation:
             return "L'équation a une infinité de solutions.</td><td>"
 
 
-class Operation:
+class Operation(object):
     """Callable class that stores and applies an operation on
     an equation.
     """
@@ -289,7 +293,7 @@ class Operation:
         if s is not None:
             return cls.from_repr(s)
         else:
-            return super().__new__(cls)
+            return object.__new__(cls)
 
     def __init__(self, s=None, operator=None, operand=None):
         """Creates an operation wating to be applied to an equation.
@@ -428,20 +432,20 @@ class Operation:
     @classmethod
     def from_repr(cls, s):
         """Makes an Operation object from a string"""
-        m = re.fullmatch("([+\-*/~])(\([\dx[+\-*/ ]+\))?", s)
+        m = re.match("^([+\-*/~])(\([\dx[+\-*/ ]+\))?$", s)
         if m is None:
             raise ValueError("String is not a valid representation of an operation.")
-        if m[1] == "+":
-            return cls(operator=add, operand=S(m[2]))
-        if m[1] == "-" and m[2]:
-            return cls(operator=sub, operand=S(m[2]))
-        if m[1] == "-":
+        if m.group(1) == "+":
+            return cls(operator=add, operand=S(m.group(2)))
+        if m.group(1) == "-" and m.group(2):
+            return cls(operator=sub, operand=S(m.group(2)))
+        if m.group(1) == "-":
             return cls(operator=neg)
-        if m[1] == "*":
-            return cls(operator=mul, operand=S(m[2]))
-        if m[1] == "/":
-            return cls(operator=truediv, operand=S(m[2]))
-        if m[1] == "~":
+        if m.group(1) == "*":
+            return cls(operator=mul, operand=S(m.group(2)))
+        if m.group(1) == "/":
+            return cls(operator=truediv, operand=S(m.group(2)))
+        if m.group(1) == "~":
             return cls(operator=inv)
 
 
@@ -458,6 +462,7 @@ class Equations(QLabel):
         ret = ["["]
         ret.extend((repr(item) + "," for item in self.data[:-1]))
         ret += [repr(self.data[-1]), "]"]
+
         return "\n".join(ret)
 
     def randomEquation(self):
@@ -540,8 +545,13 @@ class Equations(QLabel):
         # Equation or Operation, with parentheses, and between quotes,
         # a mix of numbers, operators, spaces and parentheses, for the
         # sympy expressions.
-        exp_op_r = r'''(?:(?:Equation|Operation)\(("|')[0-9\+\-\*\/=x\(\)]+\1\))'''
-        list_r = r'\[(?:' + exp_op_r + r',)+' + exp_op_r + r'\]'
+        list_r = (
+                r'''\[(?:'''
+                r'''(?:(?:Equation|Operation)\(("|')[0-9\+\-\*\/=x\(\)]+\1\))'''
+                r',)*'
+                r'''(?:(?:Equation|Operation)\(("|')[0-9\+\-\*\/=x\(\)]+\2\))'''
+                r'''\]'''
+                )
 
         # If it matches, then it should be safe to eval.
         # The only unknown part is in the parentheses,
@@ -562,13 +572,21 @@ class Equations(QLabel):
                 self.loadFromRepr(f.read())
 
     def saveToFile(self, fname, filter_):
-        r = re.compile("\(\*(.p?tht)\)$")
-        if r.search(fname):
+        r = re.compile(r"\(\*(.p?tht)\)$")
+        ext = r.search(filter_).group(1)
+
+        if re.search(ext + r"$", fname):
             with open(fname, 'w', encoding="utf-8") as f:
-                f.write(repr(self))
+                try:
+                    f.write(unicode(repr(self)))
+                except NameError:
+                    f.write(repr(self))
         else:
-            with open(fname + r.search(filter_)[1], 'w', encoding="utf-8") as f:
-                f.write(repr(self))
+            with open(fname + ext, 'w', encoding="utf-8") as f:
+                try:
+                    f.write(unicode(repr(self)))
+                except NameError:
+                    f.write(repr(self))
 
     def to_decimal(self):
         self.mode = "decimal"

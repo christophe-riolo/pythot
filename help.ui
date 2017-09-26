@@ -50,7 +50,7 @@
   <customwidget>
    <class>HelpBrowser</class>
    <extends>QTextBrowser</extends>
-   <header>pythot/pythot.h</header>
+   <header>.pythot.h</header>
   </customwidget>
  </customwidgets>
  <resources>

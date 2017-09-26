@@ -41,5 +41,5 @@ class Ui_HelpWindow(object):
         self.navigation.setTabText(self.navigation.indexOf(self.contents), _translate("HelpWindow", "Contents"))
         self.navigation.setTabText(self.navigation.indexOf(self.index), _translate("HelpWindow", "Index"))
 
-from pythot.pythot import HelpBrowser
+from .pythot import HelpBrowser
 from . import resources_rc

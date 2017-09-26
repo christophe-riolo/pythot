@@ -11,7 +11,7 @@ except ModuleNotFoundError:
 # Actual setup.
 setup(
         name="Pythot",
-        version="1.0.3",
+        version="1.0.4",
         license="GPLv3",
         keywords="math mathematics education linear equation equations",
         classifiers=[

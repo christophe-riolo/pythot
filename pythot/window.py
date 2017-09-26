@@ -558,5 +558,5 @@ class Ui_MainWindow(object):
         self.actionAide.setShortcut(_translate("MainWindow", "F1"))
         self.actionA_propos.setText(_translate("MainWindow", "A &propos"))
 
-from pythot.equations import Equations
+from .equations import Equations
 from . import resources_rc

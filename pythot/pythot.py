@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Defines the classes used to specialize the basic
 Qt classes.
 
@@ -5,6 +6,7 @@ Pythot : main window
 OperationPrompt: modal window used to ask the operation being made.
 """
 
+from __future__ import absolute_import, division, print_function, unicode_literals
 import re
 from os.path import dirname
 from operator import add, sub, mul, truediv, inv, neg
@@ -47,8 +49,8 @@ def str_to_fraction(numerator, denominator=None, mode="decimal"):
     denominator = denominator.replace(",", ".")
 
     # Imposing compulsory zero before dot/comma
-    num = re.compile("-?\d+.?\d*")
-    if num.fullmatch(numerator) and num.fullmatch(denominator):
+    num = re.compile("^-?\d+.?\d*$")
+    if num.match(numerator) and num.match(denominator):
         return S(F(F(numerator), F(denominator)))
     else:
         return None
@@ -69,7 +71,7 @@ class Pythot(QMainWindow, Ui_MainWindow):
     }
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        QMainWindow.__init__(self)
 
         self.setupUi(self)
         self.actionMode_d_cimal.trigger()
@@ -98,14 +100,14 @@ class Pythot(QMainWindow, Ui_MainWindow):
         prompt = OperationPrompt(self, **Pythot.operation_actions[sender])
         self.actionMode_fraction.triggered.connect(prompt.toFraction)
         self.actionMode_d_cimal.triggered.connect(prompt.toDecimal)
-        prompt.exec()
+        prompt.exec_()
 
     def equationPrompt(self):
         """Starts the prompt to get the current operation."""
         prompt = EquationPrompt(self)
         self.actionMode_fraction.triggered.connect(prompt.toFraction)
         self.actionMode_d_cimal.triggered.connect(prompt.toDecimal)
-        prompt.exec()
+        prompt.exec_()
 
     def aboutWindow(self):
         about = About(self)
@@ -138,7 +140,7 @@ class Pythot(QMainWindow, Ui_MainWindow):
 
 class About(QDialog, Ui_about):
     def __init__(self, parent):
-        super().__init__(parent)
+        QDialog.__init__(self, parent)
         self.setupUi(self)
 
 
@@ -148,7 +150,7 @@ class OperationPrompt(QDialog, Ui_operation):
     make_operation = pyqtSignal(Operation)
 
     def __init__(self, parent, operator, x=False):
-        super().__init__(parent)
+        QDialog.__init__(self, parent)
 
         self.operator = operator
         self._x = S("x") if x else 1
@@ -173,8 +175,8 @@ class OperationPrompt(QDialog, Ui_operation):
         """Sets the text left of the input accordingly to the
         operation we are doing.
         """
-        # We specialize only the text, so let's invoke super()
-        super().retranslateUi(self)
+        # We specialize only the text
+        Ui_operation.retranslateUi(self, self)
 
         # we might want to translate later
         _translate = QtCore.QCoreApplication.translate
@@ -200,7 +202,7 @@ class OperationPrompt(QDialog, Ui_operation):
                 operand=str_to_fraction(numerator, denominator, mode) * self._x
             )
         )
-        super().accept()
+        QDialog.accept(self)
 
     def toDecimal(self):
         self.fraction_line.hide()
@@ -215,7 +217,7 @@ class EquationPrompt(QDialog, Ui_new_eq):
     """Stores the operation asked in this dialog, to send it as a signal."""
 
     def __init__(self, parent):
-        super().__init__(parent)
+        QDialog.__init__(self, parent)
         self.setupUi(self)
 
         # I am not going to allow any other mode.
@@ -240,7 +242,7 @@ class EquationPrompt(QDialog, Ui_new_eq):
         eq.right = rx*x + r
 
         parent.equations.newEquation(eq)
-        super().accept()
+        QDialog.accept(self)
 
     def toDecimal(self):
         self.lxline.hide()
@@ -265,7 +267,7 @@ class EquationPrompt(QDialog, Ui_new_eq):
 
 class HelpBrowser(QTextBrowser):
     def __init__(self, parent):
-        super().__init__(parent)
+        QTextBrowser.__init__(self, parent)
         self.help_engine = QHelpEngine(dirname(__file__) + "/doc/doc.qhc")
         self.help_engine.setupData()
         self.setSource(QUrl("qthelp://math.pythot/doc/README.html"))
@@ -274,7 +276,7 @@ class HelpBrowser(QTextBrowser):
         if name.scheme() == "qthelp":
             return self.help_engine.fileData(name)
         else:
-            return super().loadResource(type_, name)
+            return QTextBrowser.loadResource(self, type_, name)
 
 
 from .help import Ui_HelpWindow
@@ -282,7 +284,7 @@ from .help import Ui_HelpWindow
 
 class HelpWindow(QWidget, Ui_HelpWindow):
     def __init__(self):
-        super().__init__()
+        QWidget.__init__(self)
         self.setupUi(self)
         self.contents = self.helpBrowser.help_engine.contentWidget()
         self.contents.setObjectName("contents")
