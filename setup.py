@@ -4,14 +4,14 @@ from setuptools import setup, find_packages
 pyqt5_failed = False
 try:
     import PyQt5
-except ModuleNotFoundError:
+except ImportError:
     import pip
     pyqt5_failed = pip.main(['install', 'PyQt5'])
 
 # Actual setup.
 setup(
         name="Pythot",
-        version="1.0.4",
+        version="1.0.6",
         license="GPLv3",
         keywords="math mathematics education linear equation equations",
         classifiers=[
@@ -23,13 +23,14 @@ setup(
             "Operating System :: OS Independent",
             "Programming Language :: Python",
             "Programming Language :: Python :: 3",
+            "Programming Language :: Python :: 2",
             "Topic :: Education",
             "Topic :: Scientific/Engineering :: Mathematics"
             ],
         packages=find_packages(),
         scripts=['bin/pythot'],
 
-        setup_requires=["pip"],
+        setup_requires=["pip", "setuptools"],
         install_requires=['sympy>=1.1'],
 
         package_data={

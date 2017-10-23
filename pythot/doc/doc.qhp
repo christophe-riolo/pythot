@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+    <namespace>math.pythot</namespace>
+    <virtualFolder>doc</virtualFolder>
+    <customFilter name="Pythot 1.0.6">
+        <filterAttribute>pythot</filterAttribute>
+        <filterAttribute>0.7</filterAttribute>
+    </customFilter>
+    <filterSection>
+        <filterAttribute>pythot</filterAttribute>
+        <filterAttribute>0.7</filterAttribute>
+        <toc>
+             <section title="Manuel de Pythot" ref="README.html">
+                  <section title="Présentation" ref="README.html#presentation"/>
+                  <section title="Types d'erreurs" ref="README.html#types-d-erreurs"/>
+                  <section title="Version du programme" ref="README.html#version-du-programme"/>
+                  <section title="Zone de travail" ref="README.html#zone-de-travail"/>
+                  <section title="Fichiers équation" ref="README.html#fichiers-equation"/>
+                  <section title="Barre d'état" ref="README.html#barre-d-etat"/>
+                  <section title="Première barre d'outils horizontale" ref="README.html#premiere-barre-d-outils-horizontale"/>
+                  <section title="Deuxième barre d'outils horizontale" ref="README.html#deuxieme-barre-d-outils-horizontale"/>
+                  <section title="Utilisation au moyen de la souris" ref="README.html#utilisation-au-moyen-de-la-souris"/>
+                  <section title="Utilisation au moyen du clavier" ref="README.html#utilisation-au-moyen-du-clavier"/>
+             </section>
+        </toc>
+        <keywords>
+        </keywords>
+        <files>
+            
+            <file>README.html</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

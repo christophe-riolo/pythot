@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>Manuel de Pythot</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="manuel-de-pythot">
+<h1 class="title">Manuel de Pythot</h1>
+
+<div class="section" id="presentation">
+<h1>Présentation</h1>
+<p>Le logiciel <strong>Pythot</strong> est un programme de calcul littéral traitant des équations du
+premier degré à une inconnue (classe de quatrième du collège), son objectif est d'aider à
+la compréhension des techniques de résolution&nbsp;: en se chargeant de l'aspect purement
+calculatoire, il permet à l'utilisateur de se focaliser sur la démarche de résolution de
+l'équation.</p>
+<p>La méthode classique ici retenue est celle basée sur l'image de la balance à l'équilibre&nbsp;:
+à partir d'une équation donnée, il est possible de réaliser sur celle-ci un ensemble
+d'opérations qui laissent les solutions inchangées.</p>
+<p>Le nom du programme est celui du dieu égyptien <strong>Thot</strong> en charge des Mathématiques qui
+était également le garant de la justesse de la balance lors de la pesée des âmes.</p>
+</div>
+<div class="section" id="types-d-erreurs">
+<h1>Types d'erreurs</h1>
+<p>Les erreurs fréquentes sont les suivantes&nbsp;:</p>
+<dl class="docutils">
+<dt><strong>Le bouton Valider d'une fenêtre est inactif</strong></dt>
+<dd>L'équation ou l'opération proposée est incorrecte (le coefficient n'est pas un nombre
+valide, on tente une division par zéro…), on peut obtenir des renseignements sur le
+type d'erreur en déplaçant le curseur sur le bouton.</dd>
+<dt><strong>L'affichage des nombres ne fonctionne pas</strong></dt>
+<dd>Le programme affiche des nombres avec cinq chiffres maximum, si le nombre de chiffres
+est supérieur à cinq il affiche trois points de suspension. Dans le cas d'un
+dépassement des capacités de calcul, le programme affiche le signe tilde.</dd>
+<dt><strong>L'ouverture d'un fichier équation échoue</strong></dt>
+<dd>Le fichier n'est pas du type équation ou il a été modifié manuellement de manière
+incorrecte, dans ce dernier cas le programme indique la ligne à laquelle la première
+erreur est rencontrée.</dd>
+</dl>
+</div>
+<div class="section" id="version-du-programme">
+<h1>Version du programme</h1>
+<p>La <strong>version 1.0.6</strong> du programme <strong>Pythot</strong> est écrite en Python 3 et utilise PyQt.</p>
+<p>Elle est basée sur le logiciel Thot d'Emmanuel Morand : <a class="reference external" href="http://www.emmanuelmorand.net">http://www.emmanuelmorand.net</a></p>
+<p>Le code source est disponible sur GitHub : <a class="reference external" href="https://github.com/christophe-riolo/pythot/">https://github.com/christophe-riolo/pythot/</a></p>
+</div>
+<div class="section" id="zone-de-travail">
+<h1>Zone de travail</h1>
+<p>La <strong>zone de travail</strong> affiche les différentes étapes de résolution de l'équation, y
+compris les opérations effectuées.  Les lignes sous forme résolue sont signalées par la
+présence sur leur droite de l'icône du programme, le type de l'ensemble des solutions est
+signalé lorsque l'on déplace le curseur de la souris sur celle-ci.</p>
+<p>L'affichage comporte deux modes possibles&nbsp;: le <strong>mode fraction</strong> ou le <strong>mode décimal</strong>,
+le mode en cours est affiché dans la barre d'état.</p>
+<p>La taille d'affichage peut être modifiée à l'aide des boutons <em>Agrandir</em> et <em>Réduire</em> de
+la première barre d'outils horizontale, elle est affichée dans la barre d'état.</p>
+</div>
+<div class="section" id="fichiers-equation">
+<h1>Fichiers équation</h1>
+<p>Le programme Thot permet de sauvegarder le travail en cours sous la forme d'un <strong>fichier
+équation</strong> dont l'extension associée est <strong>.tht</strong>. Les fichiers de ce type doivent être
+ouverts à partir du programme.</p>
+</div>
+<div class="section" id="barre-d-etat">
+<h1>Barre d'état</h1>
+<p>La <strong>barre d'état</strong> indique le <strong>mode d'affichage</strong> (mode fraction ou mode décimal) et la
+<strong>taille d'affichage</strong>.</p>
+</div>
+<div class="section" id="premiere-barre-d-outils-horizontale">
+<h1>Première barre d'outils horizontale</h1>
+<p>Les commandes respectives de la première barre d'outils horizontale (et les touches de
+raccourci associées) sont les suivantes&nbsp;:</p>
+<dl class="docutils">
+<dt>Le bouton <strong>Ouvrir (Ctrl O)</strong></dt>
+<dd>Il permet d'ouvrir un fichier équation.</dd>
+<dt>Le bouton <strong>Sauvegarder (Ctrl S)</strong></dt>
+<dd>Il permet de sauvegarder un fichier équation.</dd>
+<dt>Le bouton <strong>Nouvelle équation (Ctrl N)</strong></dt>
+<dd>Il permet d'ouvrir la boîte de dialogue «&nbsp;Saisie de l'équation&nbsp;».</dd>
+<dt>Le bouton <strong>Equation au hasard (Ctrl H)</strong></dt>
+<dd>Il permet d'afficher une nouvelle équation générée de manière aléatoire (elle est à
+coefficients entiers et admet une solution unique).</dd>
+<dt>Le bouton <strong>Effacer l'équation (Ctrl E)</strong></dt>
+<dd>Il permet d'effacer l'équation en cours.</dd>
+<dt>Le bouton <strong>Mode fraction (Ctrl Q)</strong></dt>
+<dd>Il permet d'imposer un affichage numérique de type fraction dans la zone de travail,
+c'est le mode par défaut.</dd>
+<dt>Le bouton <strong>Mode décimal (Ctrl D)</strong></dt>
+<dd>Il permet d'imposer un affichage numérique de type décimal (quand le nombre considéré
+est décimal&nbsp;!).</dd>
+<dt>Le bouton <strong>Agrandir (Ctrl +)</strong></dt>
+<dd>Il permet d'augmenter la taille d'affichage dans la zone de travail.</dd>
+<dt>Le bouton <strong>Réduire (Ctrl -)</strong></dt>
+<dd>Il permet de réduire la taille d'affichage dans la zone de travail.</dd>
+<dt>Le bouton <strong>Aide (F1)</strong></dt>
+<dd>Il permet d'activer le fichier d'aide du programme.</dd>
+<dt>Le bouton <strong>A propos</strong></dt>
+<dd>Il permet d'ouvrir la boîte de dialogue « À propos … » du programme.</dd>
+</dl>
+</div>
+<div class="section" id="deuxieme-barre-d-outils-horizontale">
+<h1>Deuxième barre d'outils horizontale</h1>
+<p>Les commandes respectives de la deuxième barre d'outils horizontale (et les touches de
+raccourci associées) sont les suivantes&nbsp;:</p>
+<dl class="docutils">
+<dt>Le bouton <strong>Ajouter un nombre (+)</strong></dt>
+<dd>Il permet d'ajouter un même nombre dans les deux membres de la ligne courante, sa
+valeur doit être saisie dans la boîte de dialogue «&nbsp;Choix d'une opération&nbsp;».</dd>
+<dt>Le bouton <strong>Soustraire un nombre (-)</strong></dt>
+<dd>Il permet de soustraire un même nombre dans les deux membres de la ligne courante, sa
+valeur doit être saisie dans la boîte de dialogue «&nbsp;Choix d'une opération&nbsp;».</dd>
+<dt>Le bouton <strong>Ajouter un terme en x (P)</strong></dt>
+<dd>Il permet d'ajouter un même terme en x dans les deux membres de la ligne courante, sa
+valeur doit être saisie dans la boîte de dialogue «&nbsp;Choix d'une opération&nbsp;».</dd>
+<dt>Le bouton <strong>Soustraire un terme en x (M)</strong></dt>
+<dd>Il permet de soustraire un même terme en x dans les deux membres de la ligne courante,
+sa valeur doit être saisie dans la boîte de dialogue «&nbsp;Choix d'une opération&nbsp;».</dd>
+<dt>Le bouton <strong>Multiplier (*)</strong></dt>
+<dd>Il permet de multiplier par un même nombre les deux membres de la ligne courante, sa
+valeur doit être saisie dans la boîte de dialogue «&nbsp;Choix d'une opération&nbsp;».</dd>
+<dt>Le bouton <strong>Diviser (/)</strong></dt>
+<dd>Il permet de diviser par un même nombre les deux membres de la ligne courante, sa
+valeur doit être saisie dans la boîte de dialogue «&nbsp;Choix d'une opération&nbsp;».</dd>
+<dt>Le bouton <strong>Intervertir les deux membres (I)</strong></dt>
+<dd>Il permet d'intervertir les deux membres de la ligne courante.</dd>
+<dt>Le bouton <strong>Prendre l'opposé (O)</strong></dt>
+<dd>Il permet de prendre l'opposé de la ligne courante.</dd>
+<dt>Le bouton <strong>Annuler (Suppr)</strong></dt>
+<dd>Il permet d'annuler la dernière opération réalisée.</dd>
+</dl>
+</div>
+<div class="section" id="utilisation-au-moyen-de-la-souris">
+<h1>Utilisation au moyen de la souris</h1>
+<p>Le logiciel peut être utilisé entièrement au moyen de la souris (ce qui permet son
+utilisation facile sur un tableau interactif), les différents boutons s'actionnent au
+moyen d'un clic gauche, les boîtes de saisie s'activent par un clic gauche et leur contenu
+peut être modifié à l'aide du pavé numérique virtuel.</p>
+</div>
+<div class="section" id="utilisation-au-moyen-du-clavier">
+<h1>Utilisation au moyen du clavier</h1>
+<p>Le logiciel peut être utilisé au moyen du clavier, les flèches directionnelles permettent
+de passer d'un contrôle (bouton, boîte de saisie…) à un autre à l'intérieur d'une fenêtre,
+le contrôle focalisé apparaît encadré en marron, on actionne celui-ci en appuyant sur la
+touche entrée. Le contenu des boîtes de saisie peut être modifié à l'aide du pavé
+numérique, des touches Suppr et Tab ainsi que des flèches directionnelles.</p>
+<p>Les touches début et fin de paragraphe permettent d'actionner la barre de défilement
+associée à la zone de travail (équivalent de la molette de la souris).</p>
+<p>Les touches de raccourci sont détaillées dans les rubriques <strong>Première et Deuxième barres
+d'outils horizontales</strong>.</p>
+</div>
+</div>
+</body>
+</html>
